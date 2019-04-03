@@ -1,6 +1,7 @@
 .jumbotron {
     background-color:#33CC00;
     height: 26pt;
+    position:relative;
 }
 
 body {
@@ -11,6 +12,8 @@ h1 {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight:bolder;
     font-size:26pt;
+    position: absolute;
+    bottom:2rem;
 }
 
 .container{

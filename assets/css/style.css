@@ -3,7 +3,7 @@
     height: 26pt;
 }
 
-html {
+body {
     background-color:#363534;
 }
 
@@ -11,4 +11,8 @@ h1 {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight:bolder;
     font-size:26pt;
+}
+
+.container{
+    background-color:#363534;
 }

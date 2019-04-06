@@ -11,8 +11,8 @@ function showGame() {
     }).then(function(response) {
         var results = response.data;
         console.log(results)
-        
-        
+
+
     });
 }
 
@@ -57,32 +57,7 @@ function showNews() {
             $("#news").prepend(newsCard);
         }
     });
-}
-
-    
-$(".yt-pop").on("click", function(event) {
-    event.preventDefault();
-    console.log("yes")
-    var input = $("#search").val().trim() + " game trailer"  
-    var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ input + "&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
-    $("#player").empty()
-    $.ajax({
-            url: url,
-        method: "GET"
-        }).then(function (response) {
-
-            var videoId = response.items[0].id.videoId
-            console.log(videoId)
-
-            iFrame = $("<iframe id='ytplayer' type='text/html' width='640' height='360'src='https://www.youtube.com/embed/" + videoId + "?autoplay=0' frameborder='0'>")
-            iFrame.addClass("frameBorder")
-
-    // var vidCats = [];
-    
-
-      
-
-            
+}      
     // $("#add-vid").on("click", function(event) {
     //     event.preventDefault();
     //     console.log("yes")
@@ -143,82 +118,64 @@ $(".yt-pop").on("click", function(event) {
         
        
   
-   $("#add-vid").on("click", function(event) {
-    event.preventDefault();
-    console.log("yes")
-    var input = $("#vid-input").val().trim() + " game trailer"  
-    var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ input + "&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
-    $("#player").empty()
- $.ajax({
-         url: url,
+    $(".yt-pop").on("click", function(event) {
+        event.preventDefault();
+        console.log("yes")
+        var input = $("#search").val().trim() + " game trailer"  
+        var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ input + "&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
+        $("#player").empty()
+        $.ajax({
+                url: url,
+            method: "GET"
+            }).then(function (response) {
+    
+                var videoId = response.items[0].id.videoId
+                console.log(videoId)
+    
+                iFrame = $("<iframe id='ytplayer' type='text/html' width='640' height='360'src='https://www.youtube.com/embed/" + videoId + "?autoplay=0' frameborder='0'>")
+                iFrame.addClass("frameBorder")
+  
+        // var vidCats = [];
+    
+    
+    
+               console.log(videoId)
+    
+                iFrame = $("<iframe id='ytplayer' type='text/html' width='640' height='360'src='https://www.youtube.com/embed/" + videoId + "?autoplay=0' frameborder='0'>")
+    
+                $("#player").append(iFrame)
+    
+                var comment = "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&moderationStatus=published&order=relevance&textFormat=html&videoId=" + videoId + "&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
+  $.ajax({
+      url: comment,
       method: "GET"
-        }).then(function (response) {
+  }).then(function(response){
+                    results = response.items
+    
+                    for(i = 0; i < results.length; i++ ){
+    
+                        var author = results[i].snippet.topLevelComment.snippet.authorDisplayName;
+                        var authorImg = results[i].snippet.topLevelComment.snippet.authorProfileImageUrl;
+                        var comments = results[i].snippet.topLevelComment.snippet.textDisplay;
+    
+                        var name = $("<h5>")
+                        name.append(author)
+    
+                        var commentBox = $("<div>")
+                        commentBox.addClass("border-bottom comment border-info")
+                        
+                        
+                        var authorPic = $("<img src='" + authorImg + "'>")
+                        authorPic.addClass("border comment-pic mr-2")
+    
+                     
+                        
 
-           var videoId = response.items[0].id.videoId
-           console.log(videoId)
-
-            iFrame = $("<iframe id='ytplayer' type='text/html' width='640' height='360'src='https://www.youtube.com/embed/" + videoId + "?autoplay=0' frameborder='0'>")
-
-            $("#player").append(iFrame)
-            
-            var comment = "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&moderationStatus=published&order=relevance&textFormat=html&videoId=" + videoId + "&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
-
-            
-            $.ajax({
-                url: comment,
-                method: "GET"
-            }).then(function(response){
-
-                results = response.items
-
-                for(i = 0; i < results.length; i++ ){
-
-                    var author = results[i].snippet.topLevelComment.snippet.authorDisplayName;
-                    var authorImg = results[i].snippet.topLevelComment.snippet.authorProfileImageUrl;
-                    var comments = results[i].snippet.topLevelComment.snippet.textDisplay;
-                    
-                    var name = $("<h5>")
-
-                    name.append(author)
-                    
-                    var commentBox = $("<div>")
-                    commentBox.addClass("border-bottom comment border-info")
-
-                    var authorPic = $("<img src='" + authorImg + "'>")
-                    authorPic.addClass("border comment-pic mr-2")
-
-                   var author = results[i].snippet.topLevelComment.snippet.authorDisplayName;
-                   var authorImg = results[i].snippet.topLevelComment.snippet.authorProfileImageUrl;
-                   var comments = results[i].snippet.topLevelComment.snippet.textDisplay;
-                   
-                   var name = $("<h1>")
-
-                   name.append(author)
-                   
-                   var commentBox = $("<div>")
-                   
-                   var authorPic = $("<img src='" + authorImg + "'>")
-                   
-                    console.log(authorPic)
-
-                    commentBox.append(name)
-                    commentBox.append(authorPic)
-                    commentBox.append(comments)
-                    
-                    $("#player").append(commentBox)
-                }
+    
+                        $("#player").append(commentBox)
+                    }
+                })
+    
             })
-
-        })
-})
-
-
-
-
-
-            })
-
-
-
-        })
+    })
    

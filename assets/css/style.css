@@ -7,6 +7,9 @@ body {
     background-color:lightcyan;
     height: 26pt;
     position:relative;
+    border-radius: 0;
+    margin-bottom: 0;
+
 }
 
 .bg-light {

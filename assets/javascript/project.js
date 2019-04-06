@@ -42,7 +42,3 @@ $( document ).ready(function() {
   $( document ).ready(function( getinitialGameData ) {
       console.log( "ready!" );
   });
- 
-
-
-});

@@ -116,4 +116,10 @@ h4{
 
 .poplink {
     cursor:pointer;
+    padding-right:2rem;
+    
+}
+
+.poplink:active {
+    color:#33CC00;
 }

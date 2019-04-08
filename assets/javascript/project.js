@@ -20,6 +20,7 @@ $( document ).ready(function() {
         url: initialGameDataURL,
         method: 'GET'
     }).done(function(response) {
+      
       console.log(response); // console test to make sure something returns
       if (isData == false){ // We now need to save the initial Game Data to local storage
       initialGameData = response;

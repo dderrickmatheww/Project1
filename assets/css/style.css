@@ -5,10 +5,9 @@ body {
 
 .jumbotron {
     background-color:lightcyan;
-    height: 26pt;
     position:relative;
     border-radius: 0;
-    margin-bottom: 0;
+    
 
 }
 
@@ -169,4 +168,9 @@ h5{
     border-width:1.5pt;
     border-radius:3pt;
     box-shadow:1.2pt 2.4pt 8pt rgb(2, 0, 128);
+}
+
+.game-logo {
+    height: 200px;
+    width: 250px;
 }

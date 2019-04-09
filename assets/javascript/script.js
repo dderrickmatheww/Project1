@@ -64,7 +64,7 @@ $("#search-btn").on("click", function (event) {
     var name = results[0].name
     var image = results[0].image.medium_url
     var description = results[0].deck
-    var releaseDate = results[0].original_release_date
+    var releaseDate = results[0].original_release_date.slice(-30, -9)
 
 
     $(".info-desc").html(description);

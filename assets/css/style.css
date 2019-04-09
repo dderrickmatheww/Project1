@@ -1,6 +1,5 @@
 body {
     background-color:#363534;
-
 }
 
 .jumbotron {
@@ -8,7 +7,6 @@ body {
     position:relative;
     border-radius: 0;
     
-
 }
 
 .bg-light {
@@ -175,4 +173,11 @@ h5{
 .game-logo {
     height: 200px;
     width: 250px;
+}
+
+.img-thumbnail{
+    background-color: rgb(2, 0, 128);
+    border-width:.5px;
+    border-color:rgb(2, 0, 128);
+    box-shadow:1.2pt 2.4pt 8pt rgb(2, 0, 128);
 }

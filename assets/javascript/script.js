@@ -23,20 +23,21 @@ $(".news-pop").on("click", function (event) {
       var newsDiv = $("<div class='float-left text-center'>");
       
       if (title) {
-        var h1 = $("<h1>").text(title);
+        var h1 = $("<h3>").text(title);
         newsDiv.append(h1);
       }
       if (image) {
         var personImage = $("<img>");
         personImage.attr("src", image);
+        personImage.addClass("img-thumbnail")
         newsDiv.append(personImage);
       }
       if (author) {
-        var p2 = $("<p>").html("<h2>Author:</h2> " + author);
+        var p2 = $("<p>").html("<h4>Author:</h4> " + author);
         newsDiv.append(p2);
       }
       if (descript) {
-        var p1 = $("<p>").html("<h2>Description:</h2> " + descript + "<a href='" + url + "'> Read more </a>");
+        var p1 = $("<p>").html("<h4>Description:</h4> " + descript + "<a href='" + url + "'> Read more </a>");
         newsDiv.append(p1);
       }
       $("#player").append(newsDiv)

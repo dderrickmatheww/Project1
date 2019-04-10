@@ -186,10 +186,7 @@ h5{
     box-shadow:1.2pt 2.4pt 8pt rgb(2, 0, 128);
 }
 
-.game-logo {
-    height: 200px;
-    width: 250px;
-}
+
 
 .img-thumbnail{
     background-color: rgb(2, 0, 128);
@@ -210,10 +207,9 @@ h5{
     color:skyblue;
     text-shadow: .6pt 1.2pt 4pt black;
 }
-.vidDiv {
-   border: rgb(118, 116, 235) solid 2px;
-    padding: 2%;
-    margin: 5%;
+.vidDiv{
+    margin-top: 10%;
+    border-bottom: rgb(2, 0, 128) solid 2px;
 }
 .loading {
  position: fixed; /* or absolute */
@@ -235,4 +231,53 @@ h5{
     top: 58%;
     left: 50.5%;
     color: white;
+}
+.newsFeed{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:skyblue;
+    text-shadow: .6pt 1.2pt 4pt black;
+    border-bottom: rgb(2, 0, 128) solid 2px;
+}
+@media only screen and (max-width: 600px) { 
+    h1 {
+        font-size: 20px;
+    }
+    .pic {
+        height: 300px;
+    }
+    #headline {
+        font-size: 28px;
+    }
+    .info-desc{
+        text-align: center;
+    }
+    .game-title{
+        text-align: center;
+       
+    }
+    .game-logo{
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+    .info-divider{
+        width: 100%;
+        margin: auto auto;
+        margin-bottom: 2%;
+    }
+    .load{
+        position: fixed; /* or absolute */
+        top: 58%;
+        left: 41%;
+        color: white;
+    }
+    .loading {
+        position: fixed; /* or absolute */
+         top: 50%;
+         left: 40%;
+         border-radius: 50%;
+         border: rgb(2, 0, 128) solid 2px;
+         background-image: url("../images/border1.jpg");
+         
+       }
 }

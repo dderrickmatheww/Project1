@@ -5,8 +5,8 @@ $(".news-pop").on("click", function (event) {
   event.preventDefault();
   $("#player").empty();
   var input = $("#search").val();
-  var articleURL = "https://newsapi.org/v2/everything?sources=ign&language=en&q=" + input + "&sortBy=popularity&apiKey=f38cc49da4df4fd0b9ceea723e83cb15";
-  
+  var articleURL = 'https://newsapi.org/v2/everything?sources=ign,polygon&language=en&q="' + input + '"&sortBy=relevancy&apiKey=f38cc49da4df4fd0b9ceea723e83cb15';
+
   $.ajax({
     url: articleURL,
     method: "GET"
@@ -21,7 +21,7 @@ $(".news-pop").on("click", function (event) {
       var descript = result[i].description;
       var url = result[i].url;
       var newsDiv = $("<div class='float-left text-center'>");
-      
+
       if (title) {
         var h1 = $("<h1>").text(title);
         newsDiv.append(h1);
@@ -42,7 +42,7 @@ $(".news-pop").on("click", function (event) {
       $("#player").append(newsDiv)
     }
   })
- 
+
 })
 
 //****************************************************************************************************************************************************************************************** */
@@ -52,6 +52,7 @@ $(".news-pop").on("click", function (event) {
 $("#search-btn").on("click", function (event) {
   event.preventDefault();
   var input = $("#search").val();
+  $("#player").empty();
   $.ajax({
     type: 'GET',
     dataType: 'jsonp',
@@ -91,62 +92,74 @@ $("#search-btn").on("click", function (event) {
       }
     }
 
-//*********************************************************************************************************************************************************************************** */
-//IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
-//*********************************************************************************************************************************************************************************** */
+    //*********************************************************************************************************************************************************************************** */
+    //IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
+    //*********************************************************************************************************************************************************************************** */
 
   })
+  
   var input = $("#search").val();
-  var articleURL = "https://newsapi.org/v2/everything?sources=ign&language=en&q=" + input + "&sortBy=popularity&apiKey=f38cc49da4df4fd0b9ceea723e83cb15";
+  var articleURL = 'https://newsapi.org/v2/everything?sources=ign,polygon&language=en&q="' + input + '"&sortBy=relevancy&apiKey=f38cc49da4df4fd0b9ceea723e83cb15';
 
   $.ajax({
     url: articleURL,
     method: "GET"
   }).then(function (response) {
-    console.log(response);
     var result = response.articles;
-    console.log(result);
-    var title1 = result[0].title;
-    var title2 = result[1].title;
-    var author1 = result[0].author;
-    var author2 = result[1].author;
-    var image1 = result[0].urlToImage;
-    var image2 = result[1].urlToImage;
-    var descript1 = result[0].description;
-    var descript2 = result[1].description;
-    var url1 = result[0].url;
-    var url2 = result[1].url;
-    if (title1) {
-      $(".article-title1").html(title1);
-    }
-    if (title2) {
-      $(".article-title2").html(title2);
-    }
-    if (author1) {
-      $(".readmore1").html("<a href='" + url1 + "'> Read more </a>")
-    }
-    if (author2) {
-      $(".readmore2").html("<a href='" + url2 + "'> Read more </a>")
-    }
-    if (descript1) {
-      $(".info-desc1").html(descript1)
-    }
-    if (descript2) {
-      $(".info-desc2").html(descript2)
-    }
-    if (author1) {
-      $(".author1").html("Author: " + author1)
-    }
-    if (author2) {
-      $(".author2").html("Author: " + author2)
-    }
-    if (image1) {
-      $(".article-img1").attr("src", image1)
-    }
-    if (image2) {
-      $(".article-img2").attr("src", image2)
+    $("#news").hide()
+    
+    
+      if (response.totalResults != 0) {
+      
+        console.log(result);
+        var title1 = result[0].title;
+        var title2 = result[1].title;
+        var author1 = result[0].author;
+        var author2 = result[1].author;
+        var image1 = result[0].urlToImage;
+        var image2 = result[1].urlToImage;
+        var descript1 = result[0].description;
+        var descript2 = result[1].description;
+        var url1 = result[0].url;
+        var url2 = result[1].url;
 
-    }
+
+
+        console.log("yes")
+        if (title1) {
+          $(".article-title1").html(title1);
+        }
+        if (title2) {
+          $(".article-title2").html(title2);
+        }
+        if (author1) {
+          $(".readmore1").html("<a href='" + url1 + "'> Read more </a>")
+        }
+        if (author2) {
+          $(".readmore2").html("<a href='" + url2 + "'> Read more </a>")
+        }
+        if (descript1) {
+          $(".info-desc1").html(descript1)
+        }
+        if (descript2) {
+          $(".info-desc2").html(descript2)
+        }
+        if (author1) {
+          $(".author1").html("Author: " + author1)
+        }
+        if (author2) {
+          $(".author2").html("Author: " + author2)
+        }
+        if (image1) {
+          $(".article-img1").attr("src", image1)
+        }
+        if (image2) {
+          $(".article-img2").attr("src", image2)
+        }
+        $("#news").show()
+      }
+     
+    
   })
 })
 
@@ -229,14 +242,15 @@ $("#search-btn").on("click", function (event) {
 //********************************************************************************************************************************************************************************* */
 //YOUTUBE API FOR EMBEDED VIDS AND COMMENTS
 //********************************************************************************************************************************************************************************* */
-
+$("#player").hide()
 $(".yt-pop").on("click", function (event) {
   event.preventDefault();
   $("#player").empty()
+  $("#player").toggle("slow")
   console.log("yes")
   var input = $("#search").val() + " game trailer";
   var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
-  
+
   $.ajax({
     url: url,
     method: "GET"

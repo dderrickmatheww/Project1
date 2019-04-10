@@ -6,27 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/index.css">
     <title>Hot Drop</title>
   </head>
   
   <body>
+      <div class="jumbotron">
+          <h1 id="headline">HOT DROP</h1>
+      </div>
+      <div>
+          <div class="borderImage"></div>
+      </div>
+  
+      <div class="container">
+     
+      <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+        </div>
+        <input type="text" class="form-control bg-dark" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="search" placeholder="Where we droppin'?">
 
-    <div class="jumbotron">
-        <h1>HOT DROP</h1>
+        <button class="btn btn-warning btn-large" type="button" id="search-btn">Deploy!</button>
+
+        <div class="container" id="player">
+          <!--vidDiv here for articles-->
+        </div>
+
+      </div>
     </div>
-
-    <div class="container">
-      <form id="vid-form">
-        <label for="vid-input" class="addvidtext">Search for any game here!</label>
-        <input type="text" id="vid-input"><br>
-        <!-- Button triggers new vid to be added -->
-        <input id="add-vid"  class="btn btn-outline-success" type="submit" value="Search for any game here!">
-      </form>
-    </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

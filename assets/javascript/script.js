@@ -2,11 +2,13 @@
 //NEWS API FOR OUR NEWS DROP DOWN
 //************************************************************************************************************************************************************************************ */
 $("#news").hide()
+$(".game-card").hide()
+$('#player').hide()
 
 $(".news-pop").on("click", function (event) {
   event.preventDefault();
   $("#player").empty();
-  
+  $("#player").show()
 
   var input = $("#search").val();
   var articleURL = 'https://newsapi.org/v2/everything?sources=ign,polygon&language=en&q="' + input + '"&sortBy=relevancy&apiKey=f38cc49da4df4fd0b9ceea723e83cb15';
@@ -60,8 +62,10 @@ $("#search-btn").on("click", function (event) {
   event.preventDefault();
   var input = $("#search").val();
   $("#player").empty();
-  
- 
+  $('#player').hide()
+  $(".game-card").show()
+  $('.instruct').hide()
+  $("#news").hide()
   
   $.ajax({
     type: 'GET',
@@ -77,11 +81,12 @@ $("#search-btn").on("click", function (event) {
     var description = results[0].deck
     var releaseDate = results[0].original_release_date
     var nothere = " TBA"
-    
  $(".fa-playstation").hide();
  $(".fa-steam").hide();
  $(".fa-xbox").hide();
+ 
     for(i = 0; i < 1; i++){
+
     if(description){
     $(".info-desc").html(description);
     }
@@ -133,7 +138,7 @@ $("#search-btn").on("click", function (event) {
     
     
       if (response.totalResults != 0) {
-      
+        
         console.log(result);
         var title1 = result[0].title;
         var title2 = result[1].title;
@@ -180,7 +185,8 @@ $("#search-btn").on("click", function (event) {
           $(".article-img2").attr("src", image2)
         }
         $("#news").show()
-      }
+      } 
+      
      
     
   })
@@ -196,7 +202,7 @@ $("#search-btn").on("click", function (event) {
 $(".yt-pop").on("click", function (event) {
   event.preventDefault();
   $("#player").empty()
-  
+  $('#player').show()
 
   console.log("yes")
   var input = $("#search").val() + " game trailer";
@@ -210,7 +216,7 @@ $(".yt-pop").on("click", function (event) {
     var videoId = response.items[0].id.videoId
     console.log(videoId)
 
-    iFrame = $("<iframe id='ytplayer' type='text/html' width='640' height='360'src='https://www.youtube.com/embed/" + videoId + "?autoplay=0' frameborder='0'>")
+    iFrame = $("<iframe id='ytplayer' class='container-fluid' type='text/html' width='640' height='360'src='https://www.youtube.com/embed/" + videoId + "?autoplay=0' frameborder='0'>")
     iFrame.addClass("frameBorder")
     $("#player").append(iFrame);
 
@@ -236,7 +242,7 @@ $(".yt-pop").on("click", function (event) {
 
         name.append(author)
 
-        var commentBox = $("<div>")
+        var commentBox = $("<div class='container-fluid'>")
         commentBox.addClass("border-bottom comment border-info")
 
         var authorPic = $("<img src='" + authorImg + "'>")

@@ -26,10 +26,10 @@ $( document ).ready(function() {
       var url = results[i].url;
 
       //varibles
-      var vidDiv = $("<div class=' container float-left text-center'>");
+      var vidDiv = $("<div class='container float-left text-center vidDiv'>");
       //grabs rating and sets it to a paragraph tag
       if (title) {
-        var h1 = $("<h1 class='title article-title2 pt-2 pl-3 headline'>").text(title);
+        var h1 = $("<h1 id='pic'>").text(title);
         vidDiv.append(h1);
       }
       if (image) {
@@ -38,16 +38,16 @@ $( document ).ready(function() {
         vidDiv.append(personImage);
       }
       if (author) {
-        var p2 = $("<p>").html("<h2 class='author2 lead'>Author:</h2> " + author);
+        var p2 = $("<p class='info-desc'>").html("<h2>Author:</h2> " + author);
         vidDiv.append(p2);
       }
       if (description) {
-        var p1 = $("<p>").html("<h2>Description:</h2> " + description);
+        var p1 = $("<p class='info-desc'>").html("<h2>Description: </h2> " + description);
         vidDiv.append(p1);
       }
       if (content) {
-        var p3 = $("<p>").html(
-          "<h2 class='info-desc2 lead'>Article:</h2> " +
+        var p3 = $("<p class='info-desc'>").html(
+          "<h2>Article:</h2> " +
             content +
             " " +
             "<a href='" +
@@ -56,8 +56,8 @@ $( document ).ready(function() {
         );
         vidDiv.append(p3);
       } else {
-        var p1 = $("<p>").html(
-          "<h2 class='info-desc2 lead'>Description:</h2> " +
+        var p1 = $("<p class='info-desc'>").html(
+          "<h2>Description:</h2> " +
             description +
             " " +
             "<a href='" +
@@ -75,4 +75,6 @@ $("#search-btn").on("click", function (event) {
 
 
   window.location.replace("index.html");
+
+  
 })

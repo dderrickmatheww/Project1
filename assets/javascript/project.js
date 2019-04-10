@@ -1,45 +1,78 @@
-$( document ).ready(function() {
-  // An array of shows, added shows will be pushed into this array;
-  // ****Global variable Declaration Section**** 
-  var initialGameData = []; // Variable that will hold all of the data from the API call for a game title
-  var initialGameDataURL = "https://api.steampowered.com/IStoreService/GetAppList/v1/?key=8DE99AE2B5D2AF27855C6E9EA76CEEB6&include_games=true&include_dlc=false&include_hardware=false&include_software=false&include_video=false";
-  // ****Function Declaration Section****
-  
-  // Function initiates the Ajax request to get all of the game titles from Steam on page load
-  function getinitialGameData() {
-    initialGameData = localStorage.getItem(initialGameData);
-    if (initialGameData == "") { // If no localized game data is found then
-      isData = false;
-      console.log("Local data not available!");
-    } else {
-      isData = true;
-      console.log("Local data found!");
-    };
-    // Make the Ajax call to get a new copy of the data anyway
-    $.ajax({
-        url: initialGameDataURL,
-        method: 'GET'
-    }).done(function(response) {
-      
-      console.log(response); // console test to make sure something returns
-      if (isData == false){ // We now need to save the initial Game Data to local storage
-      initialGameData = response;
-      localStorage.setItem(initialGameData);
-      console.log(window.localStorage.initialGameData); // check what was stored
-      } else {
-        var initialGameData = response.data.parse(); //save the response for the Ajax call as initialGameData
-        if (initialGameDate === window.localStorage.getItem(initialGameData)) {
-          console.log("Local data up to date!");
-        } else {
-          console.log("Local data not in sync!");
-          localStorage.setItem(initialGameData);  // Update the locally stored copy of the response data
-        };
-      };
-    });
-  };
-});  
+// ****************************************************************************************************************************************************************************************** */
+// HOMEPAGE NEWS ARTICLES/ LATEST NEWS IN THE MEDIA WORLD FROM IGN
+// ****************************************************************************************************************************************************************************************** */
 
-  // A $( document ).ready() block.
-  $( document ).ready(function( getinitialGameData ) {
-      console.log( "ready!" );
+$( document ).ready(function() {
+  
+  console.log("yes");
+
+  var queryURL =
+    "https://newsapi.org/v2/top-headlines?sources=ign&apiKey=f38cc49da4df4fd0b9ceea723e83cb15";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response);
+    var results = response.articles;
+    console.log(results);
+
+    for (var i = 0; i < results.length; i++) {
+      var title = results[i].title;
+      var author = results[i].author;
+      var image = results[i].urlToImage;
+      var description = results[i].description;
+      var content = results[i].content;
+      var url = results[i].url;
+
+      //varibles
+      var vidDiv = $("<div class=' container float-left text-center'>");
+      //grabs rating and sets it to a paragraph tag
+      if (title) {
+        var h1 = $("<h1 class='title article-title2 pt-2 pl-3 headline'>").text(title);
+        vidDiv.append(h1);
+      }
+      if (image) {
+        var personImage = $("<img class='img-thumbnail article-img2 mr-4'>");
+        personImage.attr("src", image);
+        vidDiv.append(personImage);
+      }
+      if (author) {
+        var p2 = $("<p>").html("<h2 class='author2 lead'>Author:</h2> " + author);
+        vidDiv.append(p2);
+      }
+      if (description) {
+        var p1 = $("<p>").html("<h2>Description:</h2> " + description);
+        vidDiv.append(p1);
+      }
+      if (content) {
+        var p3 = $("<p>").html(
+          "<h2 class='info-desc2 lead'>Article:</h2> " +
+            content +
+            " " +
+            "<a href='" +
+            url +
+            "'> Read more </a>"
+        );
+        vidDiv.append(p3);
+      } else {
+        var p1 = $("<p>").html(
+          "<h2 class='info-desc2 lead'>Description:</h2> " +
+            description +
+            " " +
+            "<a href='" +
+            url +
+            "'> Read more </a>"
+        );
+      }
+
+ 
+      $("#player").append(vidDiv);
+    }
   });
+});
+$("#search-btn").on("click", function (event) {
+
+
+  window.location.replace("index.html");
+})

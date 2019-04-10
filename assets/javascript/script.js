@@ -60,6 +60,9 @@ $("#search-btn").on("click", function (event) {
   event.preventDefault();
   var input = $("#search").val();
   $("#player").empty();
+  
+ 
+  
   $.ajax({
     type: 'GET',
     dataType: 'jsonp',
@@ -68,42 +71,55 @@ $("#search-btn").on("click", function (event) {
     url: 'http://www.giantbomb.com/api/search/?format=jsonp&api_key=99ec1d8980f419c59250e12a72f3b31d084e9bf9&query=' + input + "&resources=game"
   }).then(function (data) {
     results = data.results
+    console.log(results)
     var name = results[0].name
     var image = results[0].image.medium_url
     var description = results[0].deck
-    var releaseDate = results[0].original_release_date.slice(-30, -9)
-
-
+    var releaseDate = results[0].original_release_date
+    var nothere = " TBA"
+    
+ $(".fa-playstation").hide();
+ $(".fa-steam").hide();
+ $(".fa-xbox").hide();
+    for(i = 0; i < 1; i++){
+    if(description){
     $(".info-desc").html(description);
-    $(".game-title").html(name)
+    }
+    if(image){
     $(".game-logo").attr("src", image)
-    $("#release").html(releaseDate)
-
-    for (i = 0; i < results[0].platforms[i].length; i++) {
-      var platforms = results[0].platforms[i]
-      if (platforms.name === "Xbox One" || platforms.name === "Xbox" || platforms.name === "Xbox 360") {
-
-      } else {
-        $(".fa-xbox").hide();
-
-      }
-      if (platforms.name === "Playstation" || platforms.name === "Playstation 4" || platforms.name === "Playstation 3") {
-
-      } else {
-        $(".fa-playstation").hide();
-      }
-      if (platforms.name === "PC") {
-
-      } else {
-        $(".fa-steam").hide();
+    }
+    if(releaseDate){
+    
+    $("#release").html(releaseDate.slice(-30, -9))
+    }
+    else{
+      $("#release").html(nothere)
+    }
+    if(name){
+      $(".game-title").html(name)
       }
     }
-
+    
+    
+      for(i = 0; i < 3; i++){
+      var platforms = results[0].platforms[i]
+    
+      if (platforms.name === "Xbox One" || platforms.name === "Xbox 360" || platforms.name === "Xbox") {
+        $(".fa-xbox").show();
+      } 
+      if (platforms.name === "PlayStation 4" || platforms.name === "PlayStation 3" || platforms.name === "PlayStation") {
+        $(".fa-playstation").show();
+      } 
+      if (platforms.name === "PC") {
+        $(".fa-steam").show();
+      } 
+    }
+  })
     //*********************************************************************************************************************************************************************************** */
     //IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
     //*********************************************************************************************************************************************************************************** */
 
-  })
+ 
   
   var input = $("#search").val();
   var articleURL = 'https://newsapi.org/v2/everything?sources=ign,polygon&language=en&q="' + input + '"&sortBy=relevancy&apiKey=f38cc49da4df4fd0b9ceea723e83cb15';
@@ -170,79 +186,6 @@ $("#search-btn").on("click", function (event) {
   })
 })
 
-//****************************************************************************************************************************************************************************************** */
-//HOMEPAGE NEWS ARTICLES/ LATEST NEWS IN THE MEDIA WORLD FROM IGN
-//****************************************************************************************************************************************************************************************** */
-
-// $("#add-vid").on("click", function(event) {
-//   event.preventDefault();
-//   console.log("yes");
-
-//   var queryURL =
-//     "https://newsapi.org/v2/top-headlines?sources=ign&apiKey=f38cc49da4df4fd0b9ceea723e83cb15";
-
-//   $.ajax({
-//     url: queryURL,
-//     method: "GET"
-//   }).then(function(response) {
-//     console.log(response);
-//     var results = response.articles;
-//     console.log(results);
-
-//     for (var i = 0; i < results.length; i++) {
-//       var title = results[i].title;
-//       var author = results[i].author;
-//       var image = results[i].urlToImage;
-//       var description = results[i].description;
-//       var content = results[i].content;
-//       var url = results[i].url;
-
-//       //varibles
-//       var vidDiv = $("<div class='float-left text-center'>");
-//       //grabs rating and sets it to a paragraph tag
-//       if (title) {
-//         var h1 = $("<h1>").text(title);
-//         vidDiv.append(h1);
-//       }
-//       if (image) {
-//         var personImage = $("<img>");
-//         personImage.attr("src", image);
-//         vidDiv.append(personImage);
-//       }
-//       if (author) {
-//         var p2 = $("<p>").html("<h2>Author:</h2> " + author);
-//         vidDiv.append(p2);
-//       }
-//       if (description) {
-//         var p1 = $("<p>").html("<h2>Description:</h2> " + description);
-//         vidDiv.append(p1);
-//       }
-//       if (content) {
-//         var p3 = $("<p>").html(
-//           "<h2>Article:</h2> " +
-//             content +
-//             " " +
-//             "<a href='" +
-//             url +
-//             "'> Read more </a>"
-//         );
-//         vidDiv.append(p3);
-//       } else {
-//         var p1 = $("<p>").html(
-//           "<h2>Description:</h2> " +
-//             description +
-//             " " +
-//             "<a href='" +
-//             url +
-//             "'> Read more </a>"
-//         );
-//       }
-
-//       $("#add-vid").attr("data-person", vidCats[i]);
-//       $("#player").append(vidDiv);
-//     }
-//   });
-// });
 
 
 

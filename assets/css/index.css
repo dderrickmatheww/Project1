@@ -4,9 +4,12 @@ body {
 }
 
 .jumbotron {
-    background-color:lightcyan;
+    background: url("../images/banner.png");
+    background-size: cover;
     position:relative;
     border-radius: 0;
+    margin-bottom: 0;
+    padding-bottom: 100px;
 }
     
 
@@ -15,6 +18,10 @@ body {
     width: 100%;
     background-repeat: repeat-x;
     height: 8px;   
+}
+
+#search-btn, #search {
+    margin-top: 20px;
 }
 
 .bg-light {

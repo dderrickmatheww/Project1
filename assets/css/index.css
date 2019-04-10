@@ -1,6 +1,5 @@
 body {
     background-color:#363534;
-
 }
 
 .jumbotron {
@@ -164,7 +163,9 @@ h5{
 
 .game-logo {
     float:left;
-
+    border-color: rgb(1, 0, 66);
+    width:250px;
+    max-height:190px !important;
 }
 
 .poplink {
@@ -188,4 +189,11 @@ h5{
 .game-logo {
     height: 200px;
     width: 250px;
+}
+
+.img-thumbnail{
+    background-color: rgb(2, 0, 128);
+    border-width:.5px;
+    border-color:rgb(2, 0, 128);
+    box-shadow:1.2pt 2.4pt 8pt rgb(2, 0, 128);
 }

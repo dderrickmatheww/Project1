@@ -4,6 +4,7 @@
 $("#news").hide()
 $(".game-card").hide()
 $('#player').hide()
+$(".loading").hide()
 
 $(".news-pop").on("click", function (event) {
   event.preventDefault();
@@ -60,6 +61,9 @@ $(".news-pop").on("click", function (event) {
 
 $("#search-btn").on("click", function (event) {
   event.preventDefault();
+  $(".loading").show();
+  setTimeout(function() { $(".loading").hide(); }, 4000);
+  
   var input = $("#search").val();
   $("#player").empty();
   $('#player').hide()

@@ -215,3 +215,11 @@ h5{
     padding: 2%;
     margin: 5%;
 }
+.loading {
+    position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  border-radius: 50%;
+  border: rgb(2, 0, 128) solid 2px;
+}

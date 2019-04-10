@@ -135,8 +135,8 @@ h5{
 }
 
 .article {
-    padding-top:1.5em;
-    padding-bottom:0.5em;
+    padding-top:2.5em;
+    padding-bottom:1.5em;
 }
 
 .comment{
@@ -216,10 +216,23 @@ h5{
     margin: 5%;
 }
 .loading {
-    position: fixed; /* or absolute */
+ position: fixed; /* or absolute */
   top: 50%;
   left: 50%;
-  background-color: white;
   border-radius: 50%;
   border: rgb(2, 0, 128) solid 2px;
+  background-image: url("../images/border1.jpg");
+  
+}
+.btn{
+    background-image: url("../images/border1.jpg");
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 1pt 1.2pt 4pt black;
+    color: white;
+}
+.load{
+    position: fixed; /* or absolute */
+    top: 58%;
+    left: 50.5%;
+    color: white;
 }

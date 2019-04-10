@@ -81,7 +81,7 @@ $("#search-btn").on("click", function (event) {
     dataType: 'jsonp',
     crossDomain: true,
     jsonp: 'json_callback',
-    url: 'http://www.giantbomb.com/api/search/?format=jsonp&api_key=99ec1d8980f419c59250e12a72f3b31d084e9bf9&query=' + input + "&resources=game"
+    url: 'https://www.giantbomb.com/api/search/?format=jsonp&api_key=99ec1d8980f419c59250e12a72f3b31d084e9bf9&query=' + input + "&resources=game"
   }).then(function (data) {
     results = data.results
     console.log(results)

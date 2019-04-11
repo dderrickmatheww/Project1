@@ -104,7 +104,6 @@ h3 {
 
 h4{
     color:skyblue;
-    padding-bottom:.5rem;
     font-size:100%;
 }
 
@@ -126,7 +125,23 @@ h5{
     color:lightslategray;
     font-size:80%;
     padding-right:1rem;
+
 }
+
+.info-release{
+    color:lightslategray;
+    font-size:80%;
+    float:left;
+    padding-bottom:0rem !important;
+    margin-top:-2rem;
+}
+
+#release{
+    padding-bottom:0rem !important;
+    float:right;
+
+}
+
 
 .additional{
     border-color:skyblue;
@@ -165,7 +180,7 @@ h5{
     float:left;
     border-color: rgb(1, 0, 66);
     width:250px;
-    max-height:190px !important;
+    height:190px !important;
 }
 
 .poplink {
@@ -184,8 +199,25 @@ h5{
     border-width:1.5pt;
     border-radius:3pt;
     box-shadow:1.2pt 2.4pt 8pt rgb(2, 0, 128);
+    height:56.25%
 }
 
+.article-img1{
+    height:200px;
+    max-width: 330px;
+    float:left;
+    margin-bottom:1rem;
+    vertical-align: text-top;
+
+}
+
+.article-img2{
+    height:200px;
+    max-width: 330px;
+    float:left;
+    vertical-align: text-top;
+    clear:both;
+}
 
 
 .img-thumbnail{
@@ -238,6 +270,27 @@ h5{
     text-shadow: .6pt 1.2pt 4pt black;
     border-bottom: rgb(2, 0, 128) solid 2px;
 }
+
+.fab{
+    margin-left: -0.5rem;
+    padding-top: 0.1rem;
+    padding-right:0.5rem;
+}
+
+.fa-youtube{
+    padding-right:0rem;
+    margin-left: 0rem;
+    padding-bottom:0.3rem;
+    padding-top:0.3rem;
+}
+
+.fa-newspaper{
+    padding-right:0rem;
+    margin-left: 0rem;
+    padding-bottom:0.3rem;
+    padding-top:0.3rem;
+}
+
 @media only screen and (max-width: 600px) { 
     h1 {
         font-size: 20px;
@@ -265,6 +318,7 @@ h5{
         margin: auto auto;
         margin-bottom: 2%;
     }
+    
     .load{
         position: fixed; /* or absolute */
         top: 60%;

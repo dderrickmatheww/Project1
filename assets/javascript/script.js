@@ -321,7 +321,7 @@ $( document ).ready(function() {
       var vidDiv = $("<div class='container float-left text-center vidDiv'>");
       //grabs rating and sets it to a paragraph tag
       if (title) {
-        var h1 = $("<h3 id='pic'>").text(title);
+        var h1 = $("<h2 id='pic'>").text(title);
         vidDiv.append(h1);
       }
       if (image) {
@@ -330,16 +330,16 @@ $( document ).ready(function() {
         vidDiv.append(personImage);
       }
       if (author) {
-        var p2 = $("<p class='info-desc'>").html("<h3>Author:</h3> " + author);
+        var p2 = $("<p class='info-desc'>").html("<h4>Author:</h4> " + author);
         vidDiv.append(p2);
       }
       if (description) {
-        var p1 = $("<p class='info-desc'>").html("<h3>Description: </h3> " + description);
+        var p1 = $("<p class='info-desc'>").html("<h4>Description: </h4> " + description);
         vidDiv.append(p1);
       }
       if (content) {
         var p3 = $("<p class='info-desc'>").html(
-          "<h3>Article:</h3> " +
+          "<h4>Article:</h4> " +
             content +
             " " +
             "<a href='" +

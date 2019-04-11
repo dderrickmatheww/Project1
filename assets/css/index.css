@@ -88,6 +88,18 @@ body {
     -webkit-text-stroke-color:yellow;
 }
 
+#headline2 {
+    font-family: 'Press Start 2P', cursive;   
+    font-weight:bolder;
+    font-size:25pt;
+    text-align: center;
+    bottom:2rem;
+    color: black;
+    text-shadow: 6.2pt 2.4pt 4pt black;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color:yellow;
+}
+
 h2 {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:skyblue;
@@ -245,7 +257,7 @@ h5{
     .pic {
         height: 300px;
     }
-    #headline {
+    #headline, #headline2 {
         font-size: 26px;
     }
     .info-desc{

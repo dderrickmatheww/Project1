@@ -241,7 +241,7 @@ $(".yt-pop").on("click", function (event) {
 
       results = response.items
 
-      for (i = 0; i < results.length; i++) {
+      for (i = 0; i < 10; i++) {
 
         var author = results[i].snippet.topLevelComment.snippet.authorDisplayName;
         var authorImg = results[i].snippet.topLevelComment.snippet.authorProfileImageUrl;

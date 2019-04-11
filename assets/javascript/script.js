@@ -29,7 +29,8 @@ $(".news-pop").on("click", function (event) {
       var image = result[i].urlToImage;
       var descript = result[i].description;
       var url = result[i].url;
-      var newsDiv = $("<div class='float-left text-center'>");
+      var newsDiv = $("<div class='float-left float:right col-md-12'>");
+      newsDiv.addClass("border-bottom")
 
       if (title) {
         var h1 = $("<h3>").text(title);
@@ -38,7 +39,7 @@ $(".news-pop").on("click", function (event) {
       if (image) {
         var personImage = $("<img>");
         personImage.attr("src", image);
-        personImage.addClass("img-thumbnail")
+        personImage.addClass("img-thumbnail news-image")
         newsDiv.append(personImage);
       }
       if (author) {
@@ -91,8 +92,15 @@ $("#search-btn").on("click", function (event) {
     var releaseDate = results[0].original_release_date
     var nothere = " TBA"
  $(".fa-playstation").hide();
- $(".fa-steam").hide();
+ $(".fa-windows").hide();
  $(".fa-xbox").hide();
+ $(".fa-apple").hide();
+ $(".fa-linux").hide();
+ $(".fa-nintendo-switch").hide();
+ $(".fa-app-store").hide();
+ $(".fa-steam").hide();
+ $(".fa-google-play").hide();
+ 
  
     for(i = 0; i < 1; i++){
 
@@ -115,17 +123,32 @@ $("#search-btn").on("click", function (event) {
     }
     
     
-      for(i = 0; i < 3; i++){
+      for(i = 0; i < 8; i++){
       var platforms = results[0].platforms[i]
-    
+
+      if (platforms.name === "PC") {
+        $(".fa-windows").show();
+      } 
       if (platforms.name === "Xbox One" || platforms.name === "Xbox 360" || platforms.name === "Xbox") {
         $(".fa-xbox").show();
       } 
       if (platforms.name === "PlayStation 4" || platforms.name === "PlayStation 3" || platforms.name === "PlayStation") {
         $(".fa-playstation").show();
       } 
-      if (platforms.name === "PC") {
-        $(".fa-steam").show();
+      if (platforms.name === "Mac") {
+        $(".fa-apple").show();
+      } 
+      if (platforms.name === "Linux") {
+        $(".fa-linux").show();
+      } 
+      if (platforms.name === "Nintendo Switch") {
+        $(".fa-nintendo-switch").show();
+      } 
+      if (platforms.name === "Android") {
+        $(".fa-google-play").show();
+      } 
+      if (platforms.name === "iPhone" || platforms.name === "iPad") {
+        $(".fa-app-store").show();
       } 
     }
   })
@@ -298,7 +321,7 @@ $( document ).ready(function() {
       var vidDiv = $("<div class='container float-left text-center vidDiv'>");
       //grabs rating and sets it to a paragraph tag
       if (title) {
-        var h1 = $("<h1 id='pic'>").text(title);
+        var h1 = $("<h3 id='pic'>").text(title);
         vidDiv.append(h1);
       }
       if (image) {
@@ -307,16 +330,16 @@ $( document ).ready(function() {
         vidDiv.append(personImage);
       }
       if (author) {
-        var p2 = $("<p class='info-desc'>").html("<h2>Author:</h2> " + author);
+        var p2 = $("<p class='info-desc'>").html("<h3>Author:</h3> " + author);
         vidDiv.append(p2);
       }
       if (description) {
-        var p1 = $("<p class='info-desc'>").html("<h2>Description: </h2> " + description);
+        var p1 = $("<p class='info-desc'>").html("<h3>Description: </h3> " + description);
         vidDiv.append(p1);
       }
       if (content) {
         var p3 = $("<p class='info-desc'>").html(
-          "<h2>Article:</h2> " +
+          "<h3>Article:</h3> " +
             content +
             " " +
             "<a href='" +
@@ -326,7 +349,7 @@ $( document ).ready(function() {
         vidDiv.append(p3);
       } else {
         var p1 = $("<p class='info-desc'>").html(
-          "<h2>Description:</h2> " +
+          "<h3>Description:</h3> " +
             description +
             " " +
             "<a href='" +

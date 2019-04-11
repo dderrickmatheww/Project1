@@ -20,7 +20,23 @@ body {
 }
 
 #search-btn, #search {
+    font-weight:bolder;
     margin-top: 20px;
+}
+#search-btn{
+    text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+     -1px 1px 0 #000,
+      1px 1px 0 #000;
+}
+#search-btn:hover{
+    color:black;
+    text-shadow:
+    -1px -1px 0 yellow,  
+     1px -1px 0 yellow,
+     -1px 1px 0 yellow,
+      1px 1px 0 yellow;
 }
 
 .bg-light {

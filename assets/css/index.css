@@ -10,6 +10,12 @@ body {
     margin-bottom: 0;
     padding-bottom: 100px;
 }
+textarea{
+    width: 100%;
+    height: 300px;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}   
 
 .jumbotron:before{
     content: "";
@@ -31,13 +37,13 @@ body {
     height: 8px;   
 }
 
-#search-btn, #search {
+#search-btn, #search, #search-btn1 {
     font-weight:bolder;
     font-size:18pt;
     margin-top: 20px;
     z-index:2
 }
-#search-btn{
+#search-btn, #search-btn1{
     text-shadow:
     -1px -1px 0 #000,  
      1px -1px 0 #000,
@@ -46,7 +52,8 @@ body {
     position:relative;
     
 }
-#search-btn:hover{
+
+#search-btn:hover, #search-btn1:hover{
     color:black;
     text-shadow:
     -1px -1px 0 yellow,  
@@ -68,6 +75,17 @@ body {
 #search-btn span{
     position: relative;
     z-index:2
+}
+
+#search-btn1{
+    margin:auto auto;
+}
+.comment-Author{
+    height: 40px;
+    border-radius: 5px;
+}
+.input-Comment {
+    border-radius: 5px;
 }
 
 .bg-light {
@@ -328,6 +346,8 @@ h5{
 .vidDiv{
     margin-top: 10%;
     border-bottom: rgb(2, 0, 128) solid 2px;
+    padding-bottom: 3%;
+    margin-bottom: 10%;
 }
 .loading {
  position: fixed; /* or absolute */
@@ -355,7 +375,10 @@ h5{
     color:skyblue;
     text-shadow: .6pt 1.2pt 4pt black;
     border-bottom: rgb(2, 0, 128) solid 2px;
+    margin-top: 3%;
+   
 }
+
 
 .fab{
     margin-left: -0.5rem;
@@ -376,6 +399,7 @@ h5{
     padding-bottom:0.3rem;
     padding-top:0.3rem;
 }
+
 
 @media only screen and (max-width: 600px) { 
     h1 {

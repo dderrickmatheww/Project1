@@ -326,7 +326,7 @@ $( document ).ready(function() {
         vidDiv.append(h1);
       }
       if (image) {
-        var personImage = $("<img class='img-thumbnail article-img2 mr-4'>");
+        var personImage = $("<img class='img-thumbnail article-img3 mr-4'>");
         personImage.attr("src", image);
         vidDiv.append(personImage);
       }

@@ -7,7 +7,7 @@ $('#player').hide()
 $(".loading").hide()
 $(".load").hide();
 $(".ignArticles").show()
-$(".bd-example").show()
+
 $(".news-pop").on("click", function (event) {
   event.preventDefault();
   $("#player").empty();
@@ -76,7 +76,6 @@ $("#search-btn").on("click", function (event) {
   $(".form-control").removeClass("red");
 
   $(".ignArticles").hide()
-  $(".bd-example").hide()
   $(".loading").show();
   setTimeout(function() { $(".loading").hide(); }, 4000);
   $(".load").show();
@@ -337,7 +336,7 @@ $( document ).ready(function() {
         vidDiv.append(h1);
       }
       if (image) {
-        var personImage = $("<img class='img-thumbnail article-img3 mr-4'>");
+        var personImage = $("<img class='img-thumbnail article-img2 mr-4'>");
         personImage.attr("src", image);
         vidDiv.append(personImage);
       }

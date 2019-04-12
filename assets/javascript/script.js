@@ -7,7 +7,7 @@ $('#player').hide()
 $(".loading").hide()
 $(".load").hide();
 $(".ignArticles").show()
-
+$(".bd-example").show()
 $(".news-pop").on("click", function (event) {
   event.preventDefault();
   $("#player").empty();
@@ -65,6 +65,7 @@ $(".news-pop").on("click", function (event) {
 $("#search-btn").on("click", function (event) {
   event.preventDefault();
   $(".ignArticles").hide()
+  $(".bd-example").hide()
   $(".loading").show();
   setTimeout(function() { $(".loading").hide(); }, 4000);
   $(".load").show();

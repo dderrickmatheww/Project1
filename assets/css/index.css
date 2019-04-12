@@ -399,6 +399,9 @@ h5{
     padding-bottom:0.3rem;
     padding-top:0.3rem;
 }
+.comment-Author{
+    margin: auto auto;
+}
 
 
 @media only screen and (max-width: 600px) { 
@@ -444,4 +447,29 @@ h5{
          background-image: url("../images/border1.jpg");
          
        }
+       .article-img2{
+
+            height:150px;
+            width: 100%;
+          margin-bottom: 5%;
+            vertical-align: none;
+            clear:both;
+
+       }
+       #search-btn, #search, #search-btn1 {
+        font-weight:bolder;
+        font-size:10pt;
+        margin-top: 20px;
+        z-index:2
+    }
+    .comment-Author{
+        margin: auto auto;
+        margin-top: 10%;
+    }
+    #headline2{
+        margin-top: 20%;
+        font-size: 140%;
+        
+    }
+  
 }

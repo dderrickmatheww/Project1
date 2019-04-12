@@ -66,13 +66,14 @@ $("#search-btn").on("click", function (event) {
   event.preventDefault();
   
   if ($("#search").val().trim() === ""){
-    $(".form-control").attr("placeholder", "Please enter a game title")
-    $(".form-control").addClass("red")
+    $(".form-control").val("");
+    $(".form-control").attr("placeholder", "Please enter a game title");
+    $(".form-control").addClass("red");
 
     return false;
   }
-  $(".form-control").attr("placeholder", "Where we droppin'?")
-  $(".form-control").removeClass("red")
+  $(".form-control").attr("placeholder", "Where we droppin'?");
+  $(".form-control").removeClass("red");
 
   $(".ignArticles").hide()
   $(".loading").show();

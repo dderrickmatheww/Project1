@@ -65,7 +65,7 @@ $(".news-pop").on("click", function (event) {
 $("#search-btn").on("click", function (event) {
   event.preventDefault();
   
-  if ($("#search").val() === ""){
+  if ($("#search").val().trim() === ""){
     $(".form-control").attr("placeholder", "Please enter a game title")
     $(".form-control").addClass("red")
 

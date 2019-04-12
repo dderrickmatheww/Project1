@@ -1,6 +1,28 @@
 body {
     background-color:#363534;
 }
+html{
+    min-height:100%;
+    position:relative;
+    padding-bottom:5.5rem;
+}
+footer{
+    text-align:center;
+    background-color: #444342;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5rem;
+    width: 100%;
+    overflow:hidden;
+    margin-top:5rem;
+    padding:12pt;
+    border-top:solid 1px darkslategray;
+
+}
+footer span{
+    color:skyblue;
+}
 
 .jumbotron {
     background: url("../images/banner.png");
@@ -253,6 +275,10 @@ h5{
 
 #inputGroup-sizing-lg {
     color:#fff;
+}
+
+.red::placeholder{
+    color:red;
 }
 
 .btn {

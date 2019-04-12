@@ -13,7 +13,7 @@ $(".news-pop").on("click", function (event) {
   $("#player").empty();
   $("#player").show()
 
-  var input = $("#search").val();
+  var input = $("h2.title.game-title.pt-2").text().split(' ').join('+');
   var articleURL = 'https://newsapi.org/v2/everything?sources=ign,polygon&language=en&q="' + input + '"&sortBy=relevancy&apiKey=f38cc49da4df4fd0b9ceea723e83cb15';
 
   $.ajax({
@@ -59,11 +59,22 @@ $(".news-pop").on("click", function (event) {
 })
 
 //****************************************************************************************************************************************************************************************** */
-//GAINT BOMB API USED FOR GRABBING THE PROFILE OF THE GAME INCLUDING THE DISCRIPTION, PROFILE PIC, RELEASE DATE.
+//GIANT BOMB API USED FOR GRABBING THE PROFILE OF THE GAME INCLUDING THE DISCRIPTION, PROFILE PIC, RELEASE DATE.
 //****************************************************************************************************************************************************************************************** */
 
 $("#search-btn").on("click", function (event) {
   event.preventDefault();
+  
+  if ($("#search").val().trim() === ""){
+    $(".form-control").val("");
+    $(".form-control").attr("placeholder", "Please enter a game title");
+    $(".form-control").addClass("red");
+
+    return false;
+  }
+  $(".form-control").attr("placeholder", "Where we droppin'?");
+  $(".form-control").removeClass("red");
+
   $(".ignArticles").hide()
   $(".bd-example").hide()
   $(".loading").show();
@@ -238,8 +249,8 @@ $(".yt-pop").on("click", function (event) {
   $('#player').show()
 
   console.log("yes")
-  var input = $("#search").val() + " game trailer";
-  var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
+  var input = $("h2.title.game-title.pt-2").text().split(' ').join('+');
+  var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "&type=video&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
 
   $.ajax({
     url: url,

@@ -83,7 +83,7 @@ textarea{
      -1px 1px 0 yellow,
       1px 1px 0 yellow;
 }
-#search-btn:before{
+#search-btn:before, #search-btn1:before{
     content: "";
     position: absolute;
     display: block;
@@ -94,7 +94,7 @@ textarea{
     z-index: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
 }
-#search-btn span{
+#search-btn span, #search-btn1 span{
     position: relative;
     z-index:2
 }

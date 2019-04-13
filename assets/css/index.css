@@ -24,6 +24,10 @@ footer span{
     color:skyblue;
 }
 
+.comments-Section {
+    display: none;
+}
+
 .jumbotron {
     background: url("../images/banner.png");
     background-size: cover;
@@ -470,4 +474,4 @@ h5{
          background-image: url("../images/border1.jpg");
          
        }
-}
+    }

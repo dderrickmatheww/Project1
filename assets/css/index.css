@@ -83,7 +83,7 @@ textarea{
      -1px 1px 0 yellow,
       1px 1px 0 yellow;
 }
-#search-btn:before{
+#search-btn:before, #search-btn1:before{
     content: "";
     position: absolute;
     display: block;
@@ -94,7 +94,7 @@ textarea{
     z-index: 0;
     background: linear-gradient(to top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
 }
-#search-btn span{
+#search-btn span, #search-btn1 span{
     position: relative;
     z-index:2
 }
@@ -327,13 +327,6 @@ h5{
     vertical-align: text-top;
     clear:both;
 }
-.article-img3{
-    height:200px;
-    max-width: 330px;
-    float:left;
-    vertical-align: text-top;
-    clear:both;
-}
 .news-image{
     height:200px;
     max-width: 330px;
@@ -341,10 +334,6 @@ h5{
     margin-bottom:1rem;
     vertical-align: text-top;
     margin-right:1rem;
-    
-}
-.news-pop{
-    padding-right: 3%;
     
 }
 
@@ -436,9 +425,6 @@ h5{
     padding-bottom:0.3rem;
     padding-top:0.3rem;
 }
-.comment-Author{
-    margin: auto auto;
-}
 
 
 @media only screen and (max-width: 600px) { 
@@ -484,6 +470,7 @@ h5{
          background-image: url("../images/border1.jpg");
          
        }
+
        .article-img3{
         height:150px;
         width: 100%;
@@ -550,4 +537,5 @@ font-size: 15px;
 .poplink{
 padding-right: 0;
 }
+
 }

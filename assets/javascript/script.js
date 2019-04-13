@@ -7,7 +7,9 @@ $('#player').hide()
 $(".loading").hide()
 $(".load").hide();
 $(".ignArticles").show()
-$(".bd-example").show()
+$(".row").hide()
+$(".comments-Section").hide()
+
 $(".news-pop").on("click", function (event) {
   event.preventDefault();
   $("#player").empty();
@@ -76,7 +78,6 @@ $("#search-btn").on("click", function (event) {
   $(".form-control").removeClass("red");
 
   $(".ignArticles").hide()
-  $(".bd-example").hide()
   $(".loading").show();
   setTimeout(function() { $(".loading").hide(); }, 4000);
   $(".load").show();
@@ -88,6 +89,9 @@ $("#search-btn").on("click", function (event) {
   $(".game-card").show()
   $('.instruct').hide()
   $("#news").hide()
+
+  $(".row").show()
+  $(".comments-Section").show()
   
   $.ajax({
     type: 'GET',
@@ -135,7 +139,7 @@ $("#search-btn").on("click", function (event) {
     }
     
     
-      for(i = 0; i < 8; i++){
+      for(i = 0; i < results[0].platforms.length; i++){
       var platforms = results[0].platforms[i]
 
       if (platforms.name === "PC") {
@@ -163,6 +167,7 @@ $("#search-btn").on("click", function (event) {
         $(".fa-app-store").show();
       } 
     }
+
   })
     //*********************************************************************************************************************************************************************************** */
     //IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
@@ -337,7 +342,7 @@ $( document ).ready(function() {
         vidDiv.append(h1);
       }
       if (image) {
-        var personImage = $("<img class='img-thumbnail article-img3 mr-4'>");
+        var personImage = $("<img class='img-thumbnail article-img2 mr-4'>");
         personImage.attr("src", image);
         vidDiv.append(personImage);
       }

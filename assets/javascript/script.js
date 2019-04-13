@@ -1,4 +1,85 @@
 //************************************************************************************************************************************************************************************ */
+//Global Variable Declarations for function transfers
+//************************************************************************************************************************************************************************************ */
+var lastComment = "";
+var lastAuthor = "";
+var game = "";
+var gameExists;
+
+//********************************************************************************************************************************************************************************* */
+//Game Comments Display and Storage
+//********************************************************************************************************************************************************************************* */
+// Initialize Firebase
+// Make sure to match the configuration to the script version number in the HTML
+// (Ex. 3.0 != 3.7.0)
+
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAmHvnWBuXY5SM6u8iw992av8ggO7ueVoA",
+    authDomain: "hot-drop-fa9ff.firebaseapp.com",
+    databaseURL: "https://hot-drop-fa9ff.firebaseio.com",
+    projectId: "hot-drop-fa9ff",
+    storageBucket: "hot-drop-fa9ff.appspot.com",
+    messagingSenderId: "91907967407"
+  };
+
+firebase.initializeApp(config);
+
+// Create a variable to reference the database.
+var database = firebase.database();
+
+// When a comment is added update the page
+// database.ref().on("value", function(snapshot) {
+//   console.log("DB updated!");
+// });
+var gameRef = firebase.database().ref('game');
+
+$(".add-Comment").on("click", function (){
+  console.log("Add comment clicked!");
+  lastComment = $(".input-Comment").val().trim();
+  lastAuthor = $(".comment-Author").val().trim();
+  console.log(lastComment + "|" + lastAuthor);
+  $(".input-Comment").empty();
+  $(".comment-Author").empty();
+  var game = $("#search").val().trim();
+  gameExists = false;
+
+  var ref = firebase.database().ref(game).once("value").then(function(snapshot) {
+    gameExists = snapshot.child(game).exists();
+    console.log("Existing" + gameExists);
+  });
+  console.log("Game: " + game);
+  console.log("Existing" + gameExists);
+  
+  // If the comment is not blank
+  if (lastComment != "") {
+    // If the author field isn't blank
+      if (lastAuthor != "") {
+        //check and see if the game exists in Firebase.Database
+        
+          if (gameExists) {
+            gameRef.child().push({
+              comment: lastComment + "|" + lastAuthor
+
+            });
+          } else {
+            // add the game and comment to the database
+            database.ref().push(game);
+
+            gameRef.child(game).push({
+              comment: lastComment + "|" + lastAuthor
+            });
+          };
+      } else {
+        $(".comment-Input").text("Comments must have an author name!");
+      };
+    } else {
+      $(".comment-Input").text("Please enter a comment!");
+    };
+  });
+
+
+//************************************************************************************************************************************************************************************ */
 //NEWS API FOR OUR NEWS DROP DOWN
 //************************************************************************************************************************************************************************************ */
 $("#news").hide()
@@ -67,6 +148,7 @@ $(".news-pop").on("click", function (event) {
 $("#search-btn").on("click", function (event) {
   event.preventDefault();
   $(".bd-example").hide()
+  $(".comments-Section").show();
   if ($("#search").val().trim() === ""){
     $(".form-control").val("");
     $(".form-control").attr("placeholder", "Please enter a game title");
@@ -116,7 +198,6 @@ $("#search-btn").on("click", function (event) {
  $(".fa-app-store").hide();
  $(".fa-steam").hide();
  $(".fa-google-play").hide();
- 
  
     for(i = 0; i < 1; i++){
 
@@ -184,8 +265,6 @@ $("#search-btn").on("click", function (event) {
   }).then(function (response) {
     var result = response.articles;
    
-    
-    
       if (response.totalResults != 0) {
         
         console.log(result);
@@ -255,7 +334,7 @@ $(".yt-pop").on("click", function (event) {
 
   console.log("yes")
   var input = $("h2.title.game-title.pt-2").text().split(' ').join('+');
-  var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "&type=video&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
+  //var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "&type=video&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
 
   $.ajax({
     url: url,
@@ -271,7 +350,7 @@ $(".yt-pop").on("click", function (event) {
 
 
 
-    var comment = "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&moderationStatus=published&order=relevance&textFormat=html&videoId=" + videoId + "&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
+   // var comment = "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&moderationStatus=published&order=relevance&textFormat=html&videoId=" + videoId + "&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
 
 
     $.ajax({

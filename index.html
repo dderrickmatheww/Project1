@@ -172,43 +172,50 @@
       </a>
     </div>
 
-  </div>
-  <div class="ignArticles container">
-
-    <h1 class="newsFeed text-center mt-5 pb-4"> News feed! </h1>
-    <div class="container" id="player2">
-      <!--vidDiv here for articles-->
+    <div class="ignArticles container">
+      
+      <h1 class="newsFeed text-center mt-5 pb-4"> News feed! </h1>
+      <div class="container" id="player2">
+        <!--vidDiv here for articles-->
     </div>
   </div>
-  <div class="clearfix"></div>
-  <div class="container">
-    <div class="row comments">
-      <div class="col-12">
-        <h1 class="newsFeed text-center mt-5 pt-4 pb-4"> Comments </h1>
-        <textarea class="input-Comment">
+  
+<div class="clearfix"></div>
 
-      </textarea>
-      </div>
-      <div class="col-6">
+<container class="comments-Wrapper">
+  <div class="comments-Section">
+    <h1 class="newsFeed text-center mt-5 pt-4 pb-4"> Comments </h1>
+    <div class="row">
+      <div class="col-3"></div>
+        <div class="col-6">      
+          <textarea class="input-Comment" placeholder="Enter a comment!"></textarea>
+        </div>   
+      <div class="col-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-3">
         <input placeholder="Your name" class="comment-Author">
       </div>
-      <div class="col-6">
-        <button class="btn btn-warning btn-large float-right mb-5" type="button" id="search-btn1">Add comment!</button>
+      <div class="col-3">
+        <button class="btn btn-warning btn-large float-right mb-5 add-Comment" type="button"> Add comment! </button>
       </div>
+      <div class="col-3"></div>
     </div>
-    <div class="comments-Section">
-
-    </div>
+  
   </div>
+</container>
+
+<footer class="footer">
+  <span>Database powered by <a href="https://giantbomb.com">Giant Bomb</a><br>
+  News feed powered by <a href="https://ign.com">IGN</a></span>
+</footer>
 
 
-
-
-  <footer class="footer">
-    <span>Database powered by <a href="https://giantbomb.com">Giant Bomb</a><br>
-      News feed powered by <a href="https://ign.com">IGN</a></span>
-  </footer>
   <!-- Optional JavaScript -->
+
+  <!-- Firebase initialization script--> 
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>  
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"

@@ -34,6 +34,8 @@ var database = firebase.database();
 // });
 var gameRef = firebase.database().ref('game');
 
+
+
 $(".add-Comment").on("click", function (){
   console.log("Add comment clicked!");
   lastComment = $(".input-Comment").val().trim();
@@ -119,8 +121,8 @@ $(".news-pop").on("click", function (event) {
   $("#player").empty();
   $("#player").show()
 
-  var input = $("h2.title.game-title.pt-2").text().split(' ').join('+');
-  var articleURL = 'https://newsapi.org/v2/everything?sources=ign,polygon&language=en&q="' + input + '"&sortBy=relevancy&apiKey=f38cc49da4df4fd0b9ceea723e83cb15';
+  var input =  $(".game-title").attr("data-name").split(' ').join('+');
+  var articleURL = 'https://newsapi.org/v2/everything?sources=ign,polygon&language=en&q="' + input + '"&sortBy=publishedAt&apiKey=f38cc49da4df4fd0b9ceea723e83cb15';
 
   $.ajax({
     url: articleURL,
@@ -239,6 +241,7 @@ $("#search-btn").on("click", function (event) {
     }
     if(name){
       $(".game-title").html(name)
+      $(".game-title").attr("data-name", name)
       }
     }
     
@@ -271,15 +274,16 @@ $("#search-btn").on("click", function (event) {
         $(".fa-app-store").show();
       } 
     }
-
+    topNews();
   })
+  });
     //*********************************************************************************************************************************************************************************** */
     //IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
     //*********************************************************************************************************************************************************************************** */
 
- 
+ function topNews(){
   
-  var input = $("#search").val();
+  var input =  $(".game-title").attr("data-name").split(' ').join('+')
   var articleURL = 'https://newsapi.org/v2/everything?sources=ign,polygon&language=en&q="' + input + '"&sortBy=relevancy&apiKey=f38cc49da4df4fd0b9ceea723e83cb15';
 
   $.ajax({
@@ -341,7 +345,8 @@ $("#search-btn").on("click", function (event) {
      
     
   })
-})
+};
+
 
 
 
@@ -356,7 +361,7 @@ $(".yt-pop").on("click", function (event) {
   $('#player').show()
 
   console.log("yes")
-  var input = $("h2.title.game-title.pt-2").text().split(' ').join('+');
+  var input = $(".game-title").attr("data-name").split(' ').join('+');
   var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+game+trailer" + "&type=video&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
 
   $.ajax({
@@ -437,7 +442,7 @@ $( document ).ready(function() {
       var url = results[i].url;
 
       //varibles
-      var vidDiv = $("<div class='container float-left text-center vidDiv'>");
+      var vidDiv = $("<div class='container float-left text-center vidDiv news-card'>");
       //grabs rating and sets it to a paragraph tag
       if (title) {
         var h1 = $("<h2 id='pic'>").text(title);

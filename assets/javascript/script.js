@@ -41,7 +41,6 @@ $(".add-Comment").on("click", function (){
   console.log(lastComment + "|" + lastAuthor);
   $(".input-Comment").empty();
   $(".comment-Author").empty();
-  var game = $("#search").val().trim();
   gameExists = false;
 
   var ref = firebase.database().ref(game).once("value").then(function(snapshot) {
@@ -53,8 +52,17 @@ $(".add-Comment").on("click", function (){
   
   // If the comment is not blank
   if (lastComment != "") {
+    $(".input-Comment").attr("placeholder", "Enter a comment!");
+    $(".input-Comment").removeClass("red");
+
+
     // If the author field isn't blank
+    
       if (lastAuthor != "") {
+        $(".comment-Author").attr("placeholder", "Your name");
+        $(".comment-Author").removeClass("red");
+
+
         //check and see if the game exists in Firebase.Database
         
           if (gameExists) {
@@ -62,6 +70,9 @@ $(".add-Comment").on("click", function (){
               comment: lastComment + "|" + lastAuthor
 
             });
+            $(".comment-Author").val("");
+            $(".input-Comment").val("");
+
           } else {
             // add the game and comment to the database
             database.ref().push(game);
@@ -69,12 +80,22 @@ $(".add-Comment").on("click", function (){
             gameRef.child(game).push({
               comment: lastComment + "|" + lastAuthor
             });
+            $(".comment-Author").val("");
+            $(".input-Comment").val("");
           };
       } else {
-        $(".comment-Input").text("Comments must have an author name!");
+        $(".comment-Author").val("");
+        $(".comment-Author").attr("placeholder", "No name entered!");
+        $(".comment-Author").addClass("red");
+        return false
+
       };
     } else {
-      $(".comment-Input").text("Please enter a comment!");
+      $(".comment-Author").val("");
+      $(".input-Comment").attr("placeholder", "No comment entered!");
+      $(".input-Comment").addClass("red");
+      return false
+
     };
   });
 
@@ -88,6 +109,8 @@ $('#player').hide()
 $(".loading").hide()
 $(".load").hide();
 $(".ignArticles").show()
+$(".row").hide()
+$(".comments-Section").hide()
 
 $(".news-pop").on("click", function (event) {
   event.preventDefault();
@@ -147,6 +170,8 @@ $("#search-btn").on("click", function (event) {
   event.preventDefault();
   $(".bd-example").hide()
   $(".comments-Section").show();
+  game = $("#search").val().trim();
+  $(".comment-Posts").empty();
   if ($("#search").val().trim() === ""){
     $(".form-control").val("");
     $(".form-control").attr("placeholder", "Please enter a game title");
@@ -169,6 +194,9 @@ $("#search-btn").on("click", function (event) {
   $(".game-card").show()
   $('.instruct').hide()
   $("#news").hide()
+
+  $(".row").show()
+  $(".comments-Section").show()
   
   $.ajax({
     type: 'GET',
@@ -243,7 +271,29 @@ $("#search-btn").on("click", function (event) {
         $(".fa-app-store").show();
       } 
     }
-  })
+
+    console.log(game);
+    gameRef.child(game).on('child_added', function(snap){
+      var commentData = snap.val().comment.split('|');
+      var user = commentData[1];
+      var comment = commentData[0];
+      var index = 1;
+      console.log('Comment:', comment, 'by', user)
+      var newPost = $("<p>").html(comment);
+      var newAuthor = $("<p>").html('Posted by: ' + user);
+      newPost.attr("class", "text-break font-weight-bold text-left width-auto");
+      newPost.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
+      newAuthor.attr("class", "text-break font-weight-bold text-left width-auto");
+      newAuthor.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
+      $(".comment-Posts").append(newPost).append(newAuthor).append($("<br>"));
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    })
+      
+      console.log(snap.val());
+    });
+
+  });
     //*********************************************************************************************************************************************************************************** */
     //IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
     //*********************************************************************************************************************************************************************************** */
@@ -312,7 +362,7 @@ $("#search-btn").on("click", function (event) {
      
     
   })
-})
+
 
 
 
@@ -328,7 +378,7 @@ $(".yt-pop").on("click", function (event) {
 
   console.log("yes")
   var input = $("h2.title.game-title.pt-2").text().split(' ').join('+');
-  //var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "&type=video&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
+  var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+game+trailer" + "&type=video&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
 
   $.ajax({
     url: url,
@@ -344,7 +394,7 @@ $(".yt-pop").on("click", function (event) {
 
 
 
-   // var comment = "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&moderationStatus=published&order=relevance&textFormat=html&videoId=" + videoId + "&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
+ var comment = "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&moderationStatus=published&order=relevance&textFormat=html&videoId=" + videoId + "&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
 
 
     $.ajax({

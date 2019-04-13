@@ -256,7 +256,7 @@ h5{
 
 .article {
     padding-top:2.5em;
-    padding-bottom:1.5em;
+    padding-bottom:2.5em;
 }
 
 .comment{
@@ -470,4 +470,72 @@ h5{
          background-image: url("../images/border1.jpg");
          
        }
+
+       .article-img3{
+        height:150px;
+        width: 100%;
+      margin-bottom: 5%;
+        vertical-align: none;
+        clear:both;
+   }
+   #search-btn, #search, #search-btn1 {
+    font-weight:bolder;
+    font-size:10pt;
+    margin-top: 20px;
+    z-index:2
+}
+.comment-Author{
+    margin: auto auto;
+    margin-top: 10%;
+}
+#headline2{
+    margin-top: 20%;
+    font-size: 140%;
+    
+}
+h4 {
+  font-size: 20px;
+}
+#pic {
+  font-size: 25px;
+}
+.newsFeed{
+  font-size: 30px;
+}
+.article-img2{
+  width: 100%;
+  margin-bottom: 5%;
+}
+.article-img1{
+  width: 100%;
+  margin-bottom: 5%;
+}
+.article-title1{
+  font-size: 20px;
+
+}
+.article-title2{
+  font-size: 20px;
+  
+}
+.info-desc1{
+font-size: 15px;
+}
+.info-desc2{
+font-size: 15px;
+}
+.news-image{
+  width: 100%;
+}
+.game-logo {
+ height: 250px !important;
+}
+.yt-pop{
+
+  float: right;
+}
+.poplink{
+padding-right: 0;
+}
+
 }

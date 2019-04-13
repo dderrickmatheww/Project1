@@ -54,7 +54,20 @@
     </div>
 
     <div class="game-card clearfix">
-      <img class="img game-logo mr-4 clearfix" src="assets/images/thumbnailph.jpg">
+      <img class="img game-logo mr-4 clearfix" id="boxart" src="assets/images/thumbnailph.jpg">
+
+
+
+      <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">              
+              <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <img src=""  class="imagepreview" style="width: 100%;" >
+              </div>
+            </div>
+          </div>
+        </div>
 
       <div class="game-info col-md-12">
         <h2 class="title game-title pt-2">Game Title</h2>
@@ -66,22 +79,25 @@
           voluptates reprehenderit.</h2>
         <div class="info">
           <h4 class="info-plat lead" style="float:left;">Platforms: <h4 class="platforms info-plat lead">
-              <i class="fab fa-windows"></i>
-              <i class="fab fa-apple"></i>
-              <i class="fab fa-linux"></i>
+              <i class="fab fa-windows" title="Windows"></i>
+              <i class="fab fa-apple" title="Mac"></i>
+              <i class="fab fa-linux" title="Linux"></i>
 
-              <i class="fab fa-playstation"></i>
-              <i class="fab fa-xbox"></i>
-              <i class="fab fa-nintendo-switch"></i>
+              <i class="fab fa-playstation" title="PlayStation"></i>
+              <i class="fab fa-xbox" title="Xbox"></i>
+              <i class="fab fa-nintendo-switch" title="Switch"></i>
 
-              <i class="fab fa-app-store"></i>
-              <i class="fab fa-google-play"></i>
+              <i class="fab fa-app-store" title="iOS"></i>
+              <i class="fab fa-google-play" title="Android"></i>
             </h4>
           </h4>
           <br>
           <!--the platforms class is for replacing platforms with appropriate ones from the API if possible-->
           <h4 class="info-release lead">Release Date: <div id="release" style="float:right"></div>
           </h4>
+          <a href="#" id="expand">
+            <h5 class="box-pop"> <i class="fas fa-expand-arrows-alt"></i> Full-resolution art</h5> 
+          </a>
         </div>
         <br>
         <div class="additional border-top border-info">

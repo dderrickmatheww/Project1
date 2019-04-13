@@ -6,6 +6,7 @@ html{
     position:relative;
     padding-bottom:5.5rem;
 }
+
 footer{
     text-align:center;
     background-color: #444342;
@@ -30,7 +31,7 @@ footer span{
 }
 
 .jumbotron {
-    background: url("../images/banner.png");
+    background: url("../images/banner.jpg");
     background-size: cover;
     position:relative;
     border-radius: 0;
@@ -272,10 +273,14 @@ h5{
 
 
 .additional{
+    position:relative;
+    bottom:0;
     border-color:skyblue;
     padding:10pt;
-    margin-top:4rem;
+    margin-top:3rem;
+    height:auto;
 }
+
 
 .article {
     padding-top:2.5em;
@@ -351,6 +356,8 @@ h5{
     float:left;
     vertical-align: text-top;
     clear:both;
+    margin-bottom:2rem;
+    
 }
 .news-image{
     height:200px;
@@ -360,6 +367,10 @@ h5{
     vertical-align: text-top;
     margin-right:1rem;
     
+}
+
+.front-news{
+    padding-bottom:2rem;
 }
 
 .border-bottom{

@@ -231,6 +231,8 @@ $("#search-btn").on("click", function (event) {
     }
     if(image){
     $(".game-logo").attr("src", image)
+    $('.imagepreview').attr('src', $('#boxart').attr('src')); // here asign the image to the modal when the user click the enlarge link
+
     }
     if(releaseDate){
     
@@ -462,7 +464,7 @@ $( document ).ready(function() {
         vidDiv.append(p1);
       }
       if (content) {
-        var p3 = $("<p class='info-desc'>").html(
+        var p3 = $("<p class='info-desc front-news'>").html(
           "<h4>Article:</h4> " +
             content +
             " " +
@@ -486,4 +488,9 @@ $( document ).ready(function() {
       $("#player2").append(vidDiv);
     }
   });
+});
+
+$("#expand").on("click", function() {
+  $('.imagepreview').attr('src', $('#boxart').attr('src')); // here asign the image to the modal when the user click the enlarge link
+  $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
 });

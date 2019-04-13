@@ -72,7 +72,7 @@ textarea{
      -1px 1px 0 #000,
       1px 1px 0 #000;
     position:relative;
-    
+    margin-left: 5px;    
 }
 
 #search-btn:hover, #search-btn1:hover{

@@ -88,6 +88,8 @@ $('#player').hide()
 $(".loading").hide()
 $(".load").hide();
 $(".ignArticles").show()
+$(".row").hide()
+$(".comments-Section").hide()
 
 $(".news-pop").on("click", function (event) {
   event.preventDefault();
@@ -169,6 +171,9 @@ $("#search-btn").on("click", function (event) {
   $(".game-card").show()
   $('.instruct').hide()
   $("#news").hide()
+
+  $(".row").show()
+  $(".comments-Section").show()
   
   $.ajax({
     type: 'GET',
@@ -243,6 +248,7 @@ $("#search-btn").on("click", function (event) {
         $(".fa-app-store").show();
       } 
     }
+
   })
     //*********************************************************************************************************************************************************************************** */
     //IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME

@@ -53,8 +53,17 @@ $(".add-Comment").on("click", function (){
   
   // If the comment is not blank
   if (lastComment != "") {
+    $(".input-Comment").attr("placeholder", "Enter a comment!");
+    $(".input-Comment").removeClass("red");
+
+
     // If the author field isn't blank
+    
       if (lastAuthor != "") {
+        $(".comment-Author").attr("placeholder", "Your name");
+        $(".comment-Author").removeClass("red");
+
+
         //check and see if the game exists in Firebase.Database
         
           if (gameExists) {
@@ -62,19 +71,33 @@ $(".add-Comment").on("click", function (){
               comment: lastComment + "|" + lastAuthor
 
             });
+            $(".comment-Author").val("");
+            $(".input-Comment").val("");
+
           } else {
             // add the game and comment to the database
             database.ref().push(game);
 
             gameRef.child(game).push({
               comment: lastComment + "|" + lastAuthor
+              
             });
+            $(".comment-Author").val("");
+            $(".input-Comment").val("");
           };
       } else {
-        $(".comment-Input").text("Comments must have an author name!");
+        $(".comment-Author").val("");
+        $(".comment-Author").attr("placeholder", "No name entered!");
+        $(".comment-Author").addClass("red");
+        return false
+
       };
     } else {
-      $(".comment-Input").text("Please enter a comment!");
+      $(".comment-Author").val("");
+      $(".input-Comment").attr("placeholder", "No comment entered!");
+      $(".input-Comment").addClass("red");
+      return false
+
     };
   });
 

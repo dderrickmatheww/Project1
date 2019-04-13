@@ -71,21 +71,29 @@ $(".add-Comment").on("click", function (){
               comment: lastComment + "|" + lastAuthor
 
             });
+            $(".comment-Author").val("");
+            $(".input-Comment").val("");
+
           } else {
             // add the game and comment to the database
             database.ref().push(game);
 
             gameRef.child(game).push({
               comment: lastComment + "|" + lastAuthor
+              
             });
+            $(".comment-Author").val("");
+            $(".input-Comment").val("");
           };
       } else {
+        $(".comment-Author").val("");
         $(".comment-Author").attr("placeholder", "No name entered!");
         $(".comment-Author").addClass("red");
         return false
 
       };
     } else {
+      $(".comment-Author").val("");
       $(".input-Comment").attr("placeholder", "No comment entered!");
       $(".input-Comment").addClass("red");
       return false

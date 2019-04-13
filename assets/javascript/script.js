@@ -357,7 +357,7 @@ $(".yt-pop").on("click", function (event) {
 
   console.log("yes")
   var input = $("h2.title.game-title.pt-2").text().split(' ').join('+');
-  //var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "&type=video&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
+  var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "&type=video&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
 
   $.ajax({
     url: url,

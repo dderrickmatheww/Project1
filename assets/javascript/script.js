@@ -500,14 +500,18 @@ $("#expand").on("click", function() {
 // ****************************************************************************************************************************************************************************************** */
 // AUTOCOMPLETE/SUGGESTIONS FOR SEARCH
 // ****************************************************************************************************************************************************************************************** */
+jQuery.ui.autocomplete.prototype._resizeMenu = function () {
+  var ul = this.menu.element;
+  ul.outerWidth(this.element.outerWidth());
+}
 
 $("#search").autocomplete({
 
-  delay: 500,
+  delay: 800,
 
-  source: function(results) {
-    suggestInput = $("#search").val().trim();
-    var suggestURL = "https://www.giantbomb.com/api/search/?format=jsonp&api_key=99ec1d8980f419c59250e12a72f3b31d084e9bf9&query=" + suggestInput + "&resources=game"
+  source: function(request, response) {
+    input = $("#search").val().split(" ").join("+");
+    var suggestURL = "https://www.giantbomb.com/api/search/?format=jsonp&api_key=99ec1d8980f419c59250e12a72f3b31d084e9bf9&query=" + input + "&resources=game"
     console.log(suggestURL)
 
 
@@ -517,14 +521,30 @@ $("#search").autocomplete({
           dataType: 'jsonp',
           crossDomain: true,
           jsonp: 'json_callback',
-          url: suggestURL
-        })
-        .done(function(data) {
-          results = data.results;
-          console.log(results)
-          name = results[0].name
+          url: suggestURL,
+        }).done(function(data) {
+          results = data.results
+          title = results[0].name
+          console.log(results[0].name)
+          response($.map(results, function (value, key) {
+            return {   
+              label: value.name,
+              value: value.name,
+            }
+
+          }
+        
+        ))
+        
+
         });
-    }
+    },
+    
+    minLength: 3,
+    open: function() {},
+    close: function() {},
+    focus: function(event,ui) {},
+    select: function(event, ui) {}
   });
 
 

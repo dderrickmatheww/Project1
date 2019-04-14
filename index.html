@@ -7,6 +7,7 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
@@ -44,13 +45,13 @@
 
   <div class="container">
     <div class="input-group input-group-lg">
-      <div class="input-group-prepend">
+      <div class="input-group-prepend clearfix" id="searchbox">
       </div>
-      <input type="text" class="form-control bg-dark" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-        id="search" placeholder="Where we droppin'?">
-
+        <input type="text" class="form-control bg-dark" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+        id="search" placeholder="Where we droppin'?" autocomplete="on">
+      
       <button class="btn btn-warning btn-large " type="button" id="search-btn"><span>DEPLOY!</span></button>
-
+      <div id="suggestions"></div>
     </div>
 
     <div class="game-card clearfix">
@@ -235,7 +236,8 @@
   <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>  
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>

@@ -5,6 +5,7 @@ var lastComment = "";
 var lastAuthor = "";
 var game = "";
 var gameExists;
+var suggestInput = "";
 
 //********************************************************************************************************************************************************************************* */
 //Game Comments Display and Storage
@@ -494,3 +495,37 @@ $("#expand").on("click", function() {
   $('.imagepreview').attr('src', $('#boxart').attr('src')); // here asign the image to the modal when the user click the enlarge link
   $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
 });
+
+
+// ****************************************************************************************************************************************************************************************** */
+// AUTOCOMPLETE/SUGGESTIONS FOR SEARCH
+// ****************************************************************************************************************************************************************************************** */
+
+$("#search").autocomplete({
+
+  delay: 500,
+
+  source: function(results) {
+    suggestInput = $("#search").val().trim();
+    var suggestURL = "https://www.giantbomb.com/api/search/?format=jsonp&api_key=99ec1d8980f419c59250e12a72f3b31d084e9bf9&query=" + suggestInput + "&resources=game"
+    console.log(suggestURL)
+
+
+      // JSONP Request
+      $.ajax({
+          type: 'GET',
+          dataType: 'jsonp',
+          crossDomain: true,
+          jsonp: 'json_callback',
+          url: suggestURL
+        })
+        .done(function(data) {
+          results = data.results;
+          console.log(results)
+          name = results[0].name
+        });
+    }
+  });
+
+
+

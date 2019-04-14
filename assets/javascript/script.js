@@ -524,11 +524,9 @@ $("#search").autocomplete({
           url: suggestURL,
         }).done(function(data) {
           results = data.results
-          title = results[0].name
-          console.log(results[0].name)
           response($.map(results, function (value, key) {
             return {   
-              label: value.name,
+              label: value.name + " (" + value.platforms[0].name + ", " + value.original_release_date.slice(-30, -15) + ")",
               value: value.name,
             }
 

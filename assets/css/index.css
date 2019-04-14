@@ -320,9 +320,15 @@ h5{
     background: #4a4a4a;
     border-radius: 0px;
     color:white;
+    cursor: pointer;
 }
-.ui-autocomplete.source:hover {
-    background: #454545;
+
+.ui-menu-item{
+    padding:5px;
+}
+.ui-menu-item:hover {
+    background: #363534;
+    color:skyblue;
 }
 
 .ui-menu .ui-menu-item a{

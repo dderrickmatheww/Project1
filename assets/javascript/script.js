@@ -504,6 +504,7 @@ jQuery.ui.autocomplete.prototype._resizeMenu = function () {
   var ul = this.menu.element;
   ul.outerWidth(this.element.outerWidth());
 }
+//Resizes suggestions dropdown to fit width of searchbar
 
 $("#search").autocomplete({
 
@@ -528,8 +529,9 @@ $("#search").autocomplete({
             return {   
               label: value.name + " (" + value.platforms[0].name + ", " + value.original_release_date.slice(-30, -15) + ")",
               value: value.name,
+              url: value.site_detail_url,
+              id: value.id,
             }
-
           }
         
         ))
@@ -539,11 +541,109 @@ $("#search").autocomplete({
     },
     
     minLength: 3,
-    open: function() {},
-    close: function() {},
-    focus: function(event,ui) {},
-    select: function(event, ui) {}
-  });
+    select: function(event, ui) {
+      $(".bd-example").hide()
+    $(".comments-Section").show();
+
+    $(".form-control").attr("placeholder", "Where we droppin'?");
+    $(".form-control").removeClass("red");
+
+    $(".ignArticles").hide()
+    $(".loading").show();
+    setTimeout(function() { $(".loading").hide(); }, 4000);
+    $(".load").show();
+    setTimeout(function() { $(".load").hide(); }, 4000);
+
+    var input = ui.item.value
+    $("#player").empty();
+    $('#player').hide()
+    $(".game-card").show()
+    $('.instruct').hide()
+    $("#news").hide()
+
+    $(".row").show()
+    $(".comments-Section").show()
+    
+    $.ajax({
+      type: 'GET',
+      dataType: 'jsonp',
+      crossDomain: true,
+      jsonp: 'json_callback',
+      url: 'https://www.giantbomb.com/api/search/?format=jsonp&api_key=99ec1d8980f419c59250e12a72f3b31d084e9bf9&query=' + input + "&resources=game"
+    }).then(function (data) {
+      results = data.results
+      console.log(results)
+      var name = results[0].name
+      var image = results[0].image.medium_url
+      var description = results[0].deck
+      var releaseDate = results[0].original_release_date
+      var nothere = " TBA"
+  $(".fa-playstation").hide();
+  $(".fa-windows").hide();
+  $(".fa-xbox").hide();
+  $(".fa-apple").hide();
+  $(".fa-linux").hide();
+  $(".fa-nintendo-switch").hide();
+  $(".fa-app-store").hide();
+  $(".fa-steam").hide();
+  $(".fa-google-play").hide();
+  
+      for(i = 0; i < 1; i++){
+
+      if(description){
+      $(".info-desc").html(description);
+      }
+      if(image){
+      $(".game-logo").attr("src", image)
+      $('.imagepreview').attr('src', $('#boxart').attr('src')); // here asign the image to the modal when the user click the enlarge link
+
+      }
+      if(releaseDate){
+      
+      $("#release").html(releaseDate.slice(-30, -9))
+      }
+      else{
+        $("#release").html(nothere)
+      }
+      if(name){
+        $(".game-title").html(name)
+        $(".game-title").attr("data-name", name)
+        }
+      }
+      
+      
+        for(i = 0; i < results[0].platforms.length; i++){
+        var platforms = results[0].platforms[i]
+
+        if (platforms.name === "PC") {
+          $(".fa-windows").show();
+        } 
+        if (platforms.name === "Xbox One" || platforms.name === "Xbox 360" || platforms.name === "Xbox") {
+          $(".fa-xbox").show();
+        } 
+        if (platforms.name === "PlayStation 4" || platforms.name === "PlayStation 3" || platforms.name === "PlayStation") {
+          $(".fa-playstation").show();
+        } 
+        if (platforms.name === "Mac") {
+          $(".fa-apple").show();
+        } 
+        if (platforms.name === "Linux") {
+          $(".fa-linux").show();
+        } 
+        if (platforms.name === "Nintendo Switch") {
+          $(".fa-nintendo-switch").show();
+        } 
+        if (platforms.name === "Android") {
+          $(".fa-google-play").show();
+        } 
+        if (platforms.name === "iPhone" || platforms.name === "iPad") {
+          $(".fa-app-store").show();
+        } 
+      }
+      topNews();
+
+      })
+  }});
 
 
 

@@ -79,6 +79,7 @@ $(".add-Comment").on("click", function (){
 
             gameRef.child(game).push({
               comment: lastComment + "|" + lastAuthor
+              
             });
             $(".comment-Author").val("");
             $(".input-Comment").val("");
@@ -272,6 +273,7 @@ $("#search-btn").on("click", function (event) {
       } 
     }
 
+
     console.log(game);
     gameRef.child(game).on('child_added', function(snap){
       var commentData = snap.val().comment.split('|');
@@ -294,6 +296,7 @@ $("#search-btn").on("click", function (event) {
     });
 
   });
+
     //*********************************************************************************************************************************************************************************** */
     //IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
     //*********************************************************************************************************************************************************************************** */

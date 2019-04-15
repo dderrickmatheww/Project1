@@ -26,6 +26,7 @@ footer span{
 
 .comments-Section {
     display: none;
+    width:100%;
 }
 
 .jumbotron {
@@ -38,10 +39,19 @@ footer span{
 }
 textarea{
     width: 100%;
-    height: 300px;
+    height: 5rem;
     margin-top: 10%;
     margin-bottom: 5%;
+    background-color:#363534;
+    color:#fff;
+    padding:1rem;
 }   
+
+input{
+    background-color:#363534;
+    color:#fff;
+    padding:1rem;
+}
 
 .jumbotron:before{
     content: "";
@@ -63,23 +73,23 @@ textarea{
     height: 8px;   
 }
 
-#search-btn, #search, #search-btn1 {
+#search-btn, #search, .add-Comment {
     font-weight:bolder;
     font-size:18pt;
     margin-top: 20px;
     z-index:2
 }
-#search-btn, #search-btn1{
+#search-btn, .add-Comment{
     text-shadow:
     -1px -1px 0 #000,  
      1px -1px 0 #000,
      -1px 1px 0 #000,
       1px 1px 0 #000;
     position:relative;
-    
+    margin-left: 5px;    
 }
 
-#search-btn:hover, #search-btn1:hover{
+#search-btn:hover, .add-Comment:hover{
     color:black;
     text-shadow:
     -1px -1px 0 yellow,  
@@ -87,7 +97,7 @@ textarea{
      -1px 1px 0 yellow,
       1px 1px 0 yellow;
 }
-#search-btn:before{
+#search-btn:before, .add-Comment:before{
     content: "";
     position: absolute;
     display: block;
@@ -95,10 +105,10 @@ textarea{
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: -1;
     background: linear-gradient(to top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
 }
-#search-btn span{
+#search-btn span, .add-Comment span{
     position: relative;
     z-index:2
 }
@@ -260,7 +270,7 @@ h5{
 
 .article {
     padding-top:2.5em;
-    padding-bottom:1.5em;
+    padding-bottom:2.5em;
 }
 
 .comment{
@@ -474,4 +484,73 @@ h5{
          background-image: url("../images/border1.jpg");
          
        }
-    }
+
+       .article-img3{
+        height:150px;
+        width: 100%;
+      margin-bottom: 5%;
+        vertical-align: none;
+        clear:both;
+   }
+   #search-btn, #search, .add-Comment {
+    font-weight:bolder;
+    font-size:10pt;
+    margin-top: 20px;
+    z-index:2
+}
+.comment-Author{
+    margin: auto auto;
+    margin-top: 10%;
+}
+#headline2{
+    margin-top: 20%;
+    font-size: 140%;
+    
+}
+h4 {
+  font-size: 20px;
+}
+#pic {
+  font-size: 25px;
+}
+.newsFeed{
+  font-size: 30px;
+}
+.article-img2{
+  width: 100%;
+  margin-bottom: 5%;
+}
+.article-img1{
+  width: 100%;
+  margin-bottom: 5%;
+}
+.article-title1{
+  font-size: 20px;
+
+}
+.article-title2{
+  font-size: 20px;
+  
+}
+.info-desc1{
+font-size: 15px;
+}
+.info-desc2{
+font-size: 15px;
+}
+.news-image{
+  width: 100%;
+}
+.game-logo {
+ height: 250px !important;
+}
+.yt-pop{
+
+  float: right;
+}
+.poplink{
+padding-right: 0;
+}
+
+}
+

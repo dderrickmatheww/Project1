@@ -592,6 +592,12 @@ $("#search").autocomplete({
     },
     
     minLength: 3,
+    search: function(event, ui) { 
+      $('.spinner').show();
+    },
+    open: function(event, ui) {
+      $('.spinner').hide();
+    },
     select: function(event, ui) {
 
       $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")

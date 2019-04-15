@@ -357,6 +357,15 @@ h5{
     width:auto;
 }
 
+.spinner{
+    display:none;
+    position:absolute;
+    top:1rem;
+    right: 9rem;
+    z-index:5;
+    height:24px;
+}
+
 .ui-helper-hidden-accessible{
     display:none !important;
 }
@@ -640,6 +649,14 @@ padding-right: 0;
 }
 .imagepreview{
     max-width: 50vh;   
+}
+.spinner{
+    display:none;
+    position:absolute;
+    top:1.8rem;
+    right: 6rem;
+    z-index:5;
+    height:24px;
 }
 }
 

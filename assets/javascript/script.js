@@ -193,7 +193,7 @@ $("#search-btn").on("click", function (event) {
   
   $(".comments-Section").show();
   $("#comments-head").show()
-  $(".comment-Posts").empty();
+
 
 
   if ($("#search").val().trim() === ""){
@@ -207,7 +207,7 @@ $("#search-btn").on("click", function (event) {
   $(".form-control").removeClass("red");
   $(".bd-example").hide()
   $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
-
+  $(".comment-Posts").empty();
 
   $(".ignArticles").hide()
   $(".loading").show();

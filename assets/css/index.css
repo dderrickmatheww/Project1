@@ -90,7 +90,6 @@ input{
 #search-btn, #search, .add-Comment {
     font-weight:bolder;
     font-size:18pt;
-    margin-top: 20px;
     z-index:2
 }
 #search-btn, .add-Comment{
@@ -137,7 +136,9 @@ input{
 .input-Comment {
     border-radius: 5px;
 }
-
+.input-group{
+    margin-top:2rem;
+}
 .bg-light {
  background-color: lightcyan!important;
 }

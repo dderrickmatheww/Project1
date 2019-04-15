@@ -25,6 +25,7 @@ var suggestInput = "";
     messagingSenderId: "91907967407"
   };
 
+
   firebase.initializeApp(config);
 
   // Create a variable to reference the database.
@@ -196,6 +197,7 @@ $("#search-btn").on("click", function (event) {
   $("#comments-head").show()
   $(".comment-Posts").empty();
 
+
   if ($("#search").val().trim() === ""){
     $(".form-control").val("");
     $(".form-control").attr("placeholder", "Please enter a game title");
@@ -309,9 +311,11 @@ $("#search-btn").on("click", function (event) {
 
   })
   });
-//*********************************************************************************************************************************************************************************** */
-//IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
-//*********************************************************************************************************************************************************************************** */
+
+    //*********************************************************************************************************************************************************************************** */
+    //IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
+    //*********************************************************************************************************************************************************************************** */
+
 
  function topNews(){
   
@@ -377,7 +381,9 @@ $("#search-btn").on("click", function (event) {
      
     
   })
+
 };
+
 
 
 

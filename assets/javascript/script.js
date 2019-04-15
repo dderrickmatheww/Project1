@@ -295,6 +295,7 @@ $("#search-btn").on("click", function (event) {
     console.log(game);
     gameRef.child(game).on('child_added', function(snap){
       var commentData = snap.val().comment.split('|');
+      console.log(snap.val());
       var user = commentData[1];
       var comment = commentData[0];
       var index = 1;
@@ -310,7 +311,6 @@ $("#search-btn").on("click", function (event) {
       console.log("Errors handled: " + errorObject.code);
     })
       
-      console.log(snap.val());
   })
   });
     //*********************************************************************************************************************************************************************************** */

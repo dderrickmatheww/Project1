@@ -7,6 +7,19 @@ html{
     padding-bottom:5.5rem;
 }
 
+#news{
+    display:none;
+}
+#player{
+    display:none;
+}
+.row{
+    display:none;
+}
+#comments-head{
+    display:none;
+}
+
 footer{
     text-align:center;
     background-color: #444342;
@@ -150,6 +163,7 @@ input{
 }
 
 .game-card {
+    display:none;
     background-image: linear-gradient(black, rgb(1, 0, 66));
     height:auto;
     margin:3rem 0rem 3rem 0rem;
@@ -451,12 +465,13 @@ h5{
     border-bottom: rgb(2, 0, 128) solid 2px;
 }
 .loading {
- position: fixed; /* or absolute */
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  border: rgb(2, 0, 128) solid 2px;
-  background-image: url("../images/border1.jpg");
+    display:none;
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: rgb(2, 0, 128) solid 2px;
+    background-image: url("../images/border1.jpg");
   
 }
 .btn{
@@ -466,6 +481,7 @@ h5{
     color: white;
 }
 .load{
+    display:none;
     position: fixed; /* or absolute */
     top: 58%;
     left: 50.5%;

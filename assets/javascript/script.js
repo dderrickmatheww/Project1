@@ -7,15 +7,6 @@ var game = "";
 var gameExists;
 var suggestInput = "";
 
-$("#news").hide()
-$(".game-card").hide()
-$('#player').hide()
-$(".loading").hide()
-$(".load").hide();
-$(".ignArticles").show()
-$(".row").hide()
-$(".comments-Section").hide()
-$("#comments-head").hide()
 
 //********************************************************************************************************************************************************************************* */
 //Game Comments Display and Storage

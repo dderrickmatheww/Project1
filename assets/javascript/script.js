@@ -515,7 +515,7 @@ jQuery.ui.autocomplete.prototype._resizeMenu = function () {
 
 $("#search").autocomplete({
 
-  delay: 500,
+  delay: 600,
 
   source: function(request, response) {
     input = $("#search").val().split(" ").join("+");
@@ -533,8 +533,23 @@ $("#search").autocomplete({
         }).done(function(data) {
           results = data.results
           response($.map(results, function (value, key) {
+
+            if (value.original_release_date){
+              var date = ", " + value.original_release_date.slice(-30, -15);
+            }
+            else{
+              var date = ", Unreleased"
+            }
+
+            if (value.platforms){
+              var platforms = value.platforms[0].name
+            }
+            else{
+              var platforms = "TBA"
+            }
+
             return {   
-              label: value.name + " (" + value.platforms[0].name + ", " + value.original_release_date.slice(-30, -15) + ")",
+              label: value.name + " (" + platforms + date + ")",
               value: value.name,
               url: value.game_detail_url,
               id: value.guid,

@@ -172,7 +172,10 @@ $(".news-pop").on("click", function (event) {
 //****************************************************************************************************************************************************************************************** */
 
 $("#search-btn").on("click", function (event) {
+  
   event.preventDefault();
+
+  $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
   $(".bd-example").hide()
   $(".comments-Section").show();
   if ($("#search").val().trim() === ""){
@@ -214,7 +217,7 @@ $("#search-btn").on("click", function (event) {
     var image = results[0].image.medium_url
     var description = results[0].deck
     var releaseDate = results[0].original_release_date
-    var nothere = " TBA"
+    var nothere = results.expected_release_year
  $(".fa-playstation").hide();
  $(".fa-windows").hide();
  $(".fa-xbox").hide();
@@ -508,7 +511,7 @@ jQuery.ui.autocomplete.prototype._resizeMenu = function () {
 
 $("#search").autocomplete({
 
-  delay: 800,
+  delay: 500,
 
   source: function(request, response) {
     input = $("#search").val().split(" ").join("+");
@@ -542,6 +545,9 @@ $("#search").autocomplete({
     
     minLength: 3,
     select: function(event, ui) {
+
+      $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
+
       $(".bd-example").hide()
       $(".comments-Section").show();
 
@@ -577,7 +583,7 @@ $("#search").autocomplete({
         var image = results.image.medium_url
         var description = results.deck
         var releaseDate = results.original_release_date
-        var nothere = " TBA"
+        var nothere = results.expected_release_year
         
         $(".fa-playstation").hide();
         $(".fa-windows").hide();

@@ -176,7 +176,7 @@ $(".news-pop").on("click", function (event) {
 $("#search-btn").on("click", function (event) {
   
   event.preventDefault();
-
+  
   $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
   $(".bd-example").hide()
   $(".comments-Section").show();
@@ -257,6 +257,7 @@ $("#search-btn").on("click", function (event) {
     if(name){
       $(".game-title").html(name)
       $(".game-title").attr("data-name", name)
+      game = $(".game-title").attr("data-name")
       }
     }
     

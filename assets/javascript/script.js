@@ -191,8 +191,6 @@ $("#search-btn").on("click", function (event) {
   
   event.preventDefault();
   
-  $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
-  $(".bd-example").hide()
   $(".comments-Section").show();
   $("#comments-head").show()
   $(".comment-Posts").empty();
@@ -207,6 +205,9 @@ $("#search-btn").on("click", function (event) {
   }
   $(".form-control").attr("placeholder", "Where we droppin'?");
   $(".form-control").removeClass("red");
+  $(".bd-example").hide()
+  $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
+
 
   $(".ignArticles").hide()
   $(".loading").show();

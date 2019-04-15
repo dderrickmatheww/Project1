@@ -114,6 +114,28 @@ $("#comments-head").hide()
     });
 
 
+function commentsRender(){
+  console.log(game);
+  gameRef.child(game).on('child_added', function(snap){
+    var commentData = snap.val().comment.split('|');
+    console.log(snap.val());
+    var user = commentData[1];
+    var comment = commentData[0];
+    var index = 1;
+    console.log('Comment:', comment, 'by', user)
+    var newPost = $("<p>").html("&nbsp" + comment);
+    var newAuthor = $("<p>").html(user + ":");
+    newPost.attr("class", "text-break text-left width-auto lead");
+    newPost.attr("style", "font-size: 12pt; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
+    newAuthor.attr("class", "text-break font-weight-bold text-left width-auto");
+    newAuthor.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black; float:left; text-decoration: underline;");
+    $(".comment-Posts").append(newAuthor).append(newPost);
+  }, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+  })
+    
+}
+
 //************************************************************************************************************************************************************************************ */
 //NEWS API FOR OUR NEWS DROP DOWN
 //************************************************************************************************************************************************************************************ */
@@ -292,30 +314,13 @@ $("#search-btn").on("click", function (event) {
     }
     topNews();
 
-    console.log(game);
-    gameRef.child(game).on('child_added', function(snap){
-      var commentData = snap.val().comment.split('|');
-      console.log(snap.val());
-      var user = commentData[1];
-      var comment = commentData[0];
-      var index = 1;
-      console.log('Comment:', comment, 'by', user)
-      var newPost = $("<p>").html(comment);
-      var newAuthor = $("<p>").html('Posted by: ' + user);
-      newPost.attr("class", "text-break font-weight-bold text-left width-auto");
-      newPost.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
-      newAuthor.attr("class", "text-break font-weight-bold text-left width-auto");
-      newAuthor.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
-      $(".comment-Posts").append(newPost).append(newAuthor).append($("<br>"));
-    }, function(errorObject) {
-      console.log("Errors handled: " + errorObject.code);
-    })
-      
+    commentsRender();
+
   })
   });
-    //*********************************************************************************************************************************************************************************** */
-    //IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
-    //*********************************************************************************************************************************************************************************** */
+//*********************************************************************************************************************************************************************************** */
+//IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
+//*********************************************************************************************************************************************************************************** */
 
  function topNews(){
   
@@ -702,22 +707,7 @@ $("#search").autocomplete({
       game = ui.item.value
       console.log(game);
       
-      gameRef.child(game).on('child_added', function(snap){
-        var commentData = snap.val().comment.split('|');
-        var user = commentData[1];
-        var comment = commentData[0];
-        var index = 1;
-        console.log('Comment:', comment, 'by', user)
-        var newPost = $("<p>").html(comment);
-        var newAuthor = $("<p>").html('Posted by: ' + user);
-        newPost.attr("class", "text-break font-weight-bold text-left width-auto");
-        newPost.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
-        newAuthor.attr("class", "text-break font-weight-bold text-left width-auto");
-        newAuthor.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
-        $(".comment-Posts").append(newPost).append(newAuthor).append($("<br>"));
-      }, function(errorObject) {
-        console.log("Errors handled: " + errorObject.code);
-      })
+      commentsRender();
         
       })
   }});

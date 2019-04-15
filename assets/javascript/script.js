@@ -7,6 +7,16 @@ var game = "";
 var gameExists;
 var suggestInput = "";
 
+$("#news").hide()
+$(".game-card").hide()
+$('#player').hide()
+$(".loading").hide()
+$(".load").hide();
+$(".ignArticles").show()
+$(".row").hide()
+$(".comments-Section").hide()
+$("#comments-head").hide()
+
 //********************************************************************************************************************************************************************************* */
 //Game Comments Display and Storage
 //********************************************************************************************************************************************************************************* */
@@ -24,98 +34,90 @@ var suggestInput = "";
     messagingSenderId: "91907967407"
   };
 
-firebase.initializeApp(config);
+  firebase.initializeApp(config);
 
-// Create a variable to reference the database.
-var database = firebase.database();
-
-// When a comment is added update the page
-// database.ref().on("value", function(snapshot) {
-//   console.log("DB updated!");
-// });
-var gameRef = firebase.database().ref('game');
-
-
-
-$(".add-Comment").on("click", function (){
-  console.log("Add comment clicked!");
-  lastComment = $(".input-Comment").val().trim();
-  lastAuthor = $(".comment-Author").val().trim();
-  console.log(lastComment + "|" + lastAuthor);
-  $(".input-Comment").empty();
-  $(".comment-Author").empty();
-  var game = $("#search").val().trim();
-  gameExists = false;
-
-  var ref = firebase.database().ref(game).once("value").then(function(snapshot) {
-    gameExists = snapshot.child(game).exists();
-    console.log("Existing" + gameExists);
-  });
-  console.log("Game: " + game);
-  console.log("Existing" + gameExists);
+  // Create a variable to reference the database.
+  var database = firebase.database();
   
-  // If the comment is not blank
-  if (lastComment != "") {
-    $(".input-Comment").attr("placeholder", "Enter a comment!");
-    $(".input-Comment").removeClass("red");
+  // When a comment is added update the page
+  // database.ref().on("value", function(snapshot) {
+  //   console.log("DB updated!");
+  // });
 
-
-    // If the author field isn't blank
+  var gameRef = firebase.database().ref(`game`);
+  
+  $(".add-Comment").on("click", function (){
     
-      if (lastAuthor != "") {
-        $(".comment-Author").attr("placeholder", "Your name");
-        $(".comment-Author").removeClass("red");
+    console.log("Add comment clicked!");
+    lastComment = $(".input-Comment").val().trim();
+    lastAuthor = $(".comment-Author").val().trim();
+    console.log(lastComment + "|" + lastAuthor);
+    $(".input-Comment").empty();
+    $(".comment-Author").empty();
+    gameExists = false;
 
-
-        //check and see if the game exists in Firebase.Database
-        
-          if (gameExists) {
-            gameRef.child().push({
-              comment: lastComment + "|" + lastAuthor
-
-            });
-            $(".comment-Author").val("");
-            $(".input-Comment").val("");
-
-          } else {
-            // add the game and comment to the database
-            database.ref().push(game);
-
-            gameRef.child(game).push({
-              comment: lastComment + "|" + lastAuthor
-              
-            });
-            $(".comment-Author").val("");
-            $(".input-Comment").val("");
-          };
+    var ref = firebase.database().ref(game).once("value").then(function(snapshot) {
+      gameExists = snapshot.child(game).exists();
+      console.log("Existing" + gameExists);
+    });
+    console.log("Game: " + game);
+    console.log("Existing" + gameExists);
+    
+    // If the comment is not blank
+    if (lastComment != "") {
+      $(".input-Comment").attr("placeholder", "Enter a comment!");
+      $(".input-Comment").removeClass("red");
+  
+  
+      // If the author field isn't blank
+      
+        if (lastAuthor != "") {
+          $(".comment-Author").attr("placeholder", "Your name");
+          $(".comment-Author").removeClass("red");
+  
+  
+          //check and see if the game exists in Firebase.Database
+          
+            if (gameExists) {
+              gameRef.child().push({
+                comment: lastComment + "|" + lastAuthor
+  
+              });
+              $(".comment-Author").val("");
+              $(".input-Comment").val("");
+  
+            } else {
+              // add the game and comment to the database
+              database.ref().push(game);
+  
+              gameRef.child(game).push({
+                comment: lastComment + "|" + lastAuthor
+                
+              });
+              $(".comment-Author").val("");
+              $(".input-Comment").val("");
+            };
+        } else {
+          $(".comment-Author").val("");
+          $(".comment-Author").attr("placeholder", "No name entered!");
+          $(".comment-Author").addClass("red");
+          return false
+  
+        };
       } else {
         $(".comment-Author").val("");
-        $(".comment-Author").attr("placeholder", "No name entered!");
-        $(".comment-Author").addClass("red");
+        $(".input-Comment").attr("placeholder", "No comment entered!");
+        $(".input-Comment").addClass("red");
         return false
-
+  
       };
-    } else {
-      $(".comment-Author").val("");
-      $(".input-Comment").attr("placeholder", "No comment entered!");
-      $(".input-Comment").addClass("red");
-      return false
-
-    };
-  });
+    });
 
 
 //************************************************************************************************************************************************************************************ */
 //NEWS API FOR OUR NEWS DROP DOWN
 //************************************************************************************************************************************************************************************ */
-$("#news").hide()
-$(".game-card").hide()
-$('#player').hide()
-$(".loading").hide()
-$(".load").hide();
-$(".ignArticles").show()
-$(".row").hide()
-$(".comments-Section").hide()
+
 
 $(".news-pop").on("click", function (event) {
   event.preventDefault();
@@ -178,6 +180,9 @@ $("#search-btn").on("click", function (event) {
   $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
   $(".bd-example").hide()
   $(".comments-Section").show();
+  $("#comments-head").show()
+  $(".comment-Posts").empty();
+
   if ($("#search").val().trim() === ""){
     $(".form-control").val("");
     $(".form-control").attr("placeholder", "Please enter a game title");
@@ -285,6 +290,26 @@ $("#search-btn").on("click", function (event) {
       } 
     }
     topNews();
+
+    console.log(game);
+    gameRef.child(game).on('child_added', function(snap){
+      var commentData = snap.val().comment.split('|');
+      var user = commentData[1];
+      var comment = commentData[0];
+      var index = 1;
+      console.log('Comment:', comment, 'by', user)
+      var newPost = $("<p>").html(comment);
+      var newAuthor = $("<p>").html('Posted by: ' + user);
+      newPost.attr("class", "text-break font-weight-bold text-left width-auto");
+      newPost.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
+      newAuthor.attr("class", "text-break font-weight-bold text-left width-auto");
+      newAuthor.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
+      $(".comment-Posts").append(newPost).append(newAuthor).append($("<br>"));
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    })
+      
+      console.log(snap.val());
   })
   });
     //*********************************************************************************************************************************************************************************** */
@@ -569,6 +594,9 @@ $("#search").autocomplete({
 
       $(".bd-example").hide()
       $(".comments-Section").show();
+      $("#comments-head").show()
+      $(".comment-Posts").empty();
+
 
       $(".form-control").attr("placeholder", "Where we droppin'?");
       $(".form-control").removeClass("red");
@@ -587,7 +615,6 @@ $("#search").autocomplete({
       $("#news").hide()
 
       $(".row").show()
-      $(".comments-Section").show()
       
       $.ajax({
         type: 'GET',
@@ -671,7 +698,26 @@ $("#search").autocomplete({
           } 
       }
       topNews();
-
+      game = ui.item.value
+      console.log(game);
+      
+      gameRef.child(game).on('child_added', function(snap){
+        var commentData = snap.val().comment.split('|');
+        var user = commentData[1];
+        var comment = commentData[0];
+        var index = 1;
+        console.log('Comment:', comment, 'by', user)
+        var newPost = $("<p>").html(comment);
+        var newAuthor = $("<p>").html('Posted by: ' + user);
+        newPost.attr("class", "text-break font-weight-bold text-left width-auto");
+        newPost.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
+        newAuthor.attr("class", "text-break font-weight-bold text-left width-auto");
+        newAuthor.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
+        $(".comment-Posts").append(newPost).append(newAuthor).append($("<br>"));
+      }, function(errorObject) {
+        console.log("Errors handled: " + errorObject.code);
+      })
+        
       })
   }});
 

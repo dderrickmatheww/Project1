@@ -41,7 +41,6 @@ $(".add-Comment").on("click", function (){
   console.log(lastComment + "|" + lastAuthor);
   $(".input-Comment").empty();
   $(".comment-Author").empty();
-  var game = $("#search").val().trim();
   gameExists = false;
 
   var ref = firebase.database().ref(game).once("value").then(function(snapshot) {
@@ -172,6 +171,8 @@ $("#search-btn").on("click", function (event) {
   event.preventDefault();
   $(".bd-example").hide()
   $(".comments-Section").show();
+  game = $("#search").val().trim();
+  $(".comment-Posts").empty();
   if ($("#search").val().trim() === ""){
     $(".form-control").val("");
     $(".form-control").attr("placeholder", "Please enter a game title");
@@ -272,7 +273,30 @@ $("#search-btn").on("click", function (event) {
       } 
     }
 
-  })
+
+    console.log(game);
+    gameRef.child(game).on('child_added', function(snap){
+      var commentData = snap.val().comment.split('|');
+      var user = commentData[1];
+      var comment = commentData[0];
+      var index = 1;
+      console.log('Comment:', comment, 'by', user)
+      var newPost = $("<p>").html(comment);
+      var newAuthor = $("<p>").html('Posted by: ' + user);
+      newPost.attr("class", "text-break font-weight-bold text-left width-auto");
+      newPost.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
+      newAuthor.attr("class", "text-break font-weight-bold text-left width-auto");
+      newAuthor.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
+      $(".comment-Posts").append(newPost).append(newAuthor).append($("<br>"));
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    })
+      
+      console.log(snap.val());
+    });
+
+  });
+
     //*********************************************************************************************************************************************************************************** */
     //IGN NEWS ARTICLE API FOR TOP TWO ARTICLES WHEN SEARCHING THE GAME
     //*********************************************************************************************************************************************************************************** */
@@ -341,7 +365,7 @@ $("#search-btn").on("click", function (event) {
      
     
   })
-})
+
 
 
 

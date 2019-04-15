@@ -217,7 +217,8 @@ $("#search-btn").on("click", function (event) {
     var image = results[0].image.medium_url
     var description = results[0].deck
     var releaseDate = results[0].original_release_date
-    var nothere = results.expected_release_year
+    var futureRelease = results[0].expected_release_year
+    var nothere = "TBA"
  $(".fa-playstation").hide();
  $(".fa-windows").hide();
  $(".fa-xbox").hide();
@@ -241,6 +242,9 @@ $("#search-btn").on("click", function (event) {
     if(releaseDate){
     
     $("#release").html(releaseDate.slice(-30, -9))
+    }
+    else if (futureRelease){
+      $("#release").html(futureRelease)
     }
     else{
       $("#release").html(nothere)
@@ -583,7 +587,8 @@ $("#search").autocomplete({
         var image = results.image.medium_url
         var description = results.deck
         var releaseDate = results.original_release_date
-        var nothere = results.expected_release_year
+        var futureRelease = results.expected_release_year
+        var nothere = "TBA"
         
         $(".fa-playstation").hide();
         $(".fa-windows").hide();
@@ -608,6 +613,9 @@ $("#search").autocomplete({
         if(releaseDate){
         
         $("#release").html(releaseDate.slice(-30, -9))
+        }
+        else if (futureRelease){
+          $("#release").html(futureRelease)
         }
         else{
           $("#release").html(nothere)

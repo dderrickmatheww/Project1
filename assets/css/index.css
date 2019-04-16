@@ -90,7 +90,6 @@ input{
 #search-btn, #search, .add-Comment {
     font-weight:bolder;
     font-size:18pt;
-    margin-top: 20px;
     z-index:2
 }
 #search-btn, .add-Comment{
@@ -137,7 +136,9 @@ input{
 .input-Comment {
     border-radius: 5px;
 }
-
+.input-group{
+    margin-top:2rem;
+}
 .bg-light {
  background-color: lightcyan!important;
 }
@@ -335,6 +336,7 @@ h5{
     border-radius: 0px;
     color:white;
     cursor: pointer;
+    z-index:999;
 }
 
 .ui-menu-item{
@@ -353,6 +355,15 @@ h5{
 .ui-autocomplete-loading {
     background: #454545;
     width:auto;
+}
+
+.spinner{
+    display:none;
+    position:absolute;
+    top:1rem;
+    right: 9rem;
+    z-index:5;
+    height:24px;
 }
 
 .ui-helper-hidden-accessible{
@@ -465,6 +476,7 @@ h5{
     border-bottom: rgb(2, 0, 128) solid 2px;
 }
 .loading {
+    z-index:1000;
     display:none;
     position: fixed; /* or absolute */
     top: 50%;
@@ -481,6 +493,7 @@ h5{
     color: white;
 }
 .load{
+    z-index:1000;
     display:none;
     position: fixed; /* or absolute */
     top: 58%;
@@ -547,12 +560,14 @@ h5{
     }
     
     .load{
+        z-index:1000;
         position: fixed; /* or absolute */
         top: 60%;
         left: 41%;
         color: white;
     }
     .loading {
+        z-index:1000;
         position: fixed; /* or absolute */
          top: 50%;
          left: 40%;
@@ -575,11 +590,17 @@ h5{
     margin-top: 20px;
     z-index:2
 }
+
+
+.add-Comment{
+    margin-top:10%;
+
 .add-Comment {
     margin-left: 0px;   
     margin-top: 10%;
     width: 100%;
     
+
 }
 .comment-Author{
     text-align: center;
@@ -632,6 +653,16 @@ font-size: 15px;
 .poplink{
 padding-right: 0;
 }
-
+.imagepreview{
+    max-width: 50vh;   
+}
+.spinner{
+    display:none;
+    position:absolute;
+    top:1.8rem;
+    right: 6rem;
+    z-index:5;
+    height:24px;
+}
 }
 

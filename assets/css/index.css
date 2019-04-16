@@ -576,14 +576,15 @@ h5{
     z-index:2
 }
 .add-Comment {
-   
+    margin-left: 0px;   
     margin-top: 10%;
+    width: 100%;
     
 }
 .comment-Author{
-    
+    text-align: center;
     margin-top: 10%;
-   
+    width: 100%;
 }
 #headline2{
     margin-top: 20%;

@@ -196,6 +196,7 @@ $("#search-btn").on("click", function (event) {
 
 
 
+
   if ($("#search").val().trim() === ""){
     $(".form-control").val("");
     $(".form-control").attr("placeholder", "Please enter a game title");

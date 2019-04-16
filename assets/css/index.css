@@ -591,17 +591,25 @@ h5{
     z-index:2
 }
 
+
 .add-Comment{
     margin-top:10%;
+
+.add-Comment {
+    margin-left: 0px;   
+    margin-top: 10%;
+    width: 100%;
+    
+
 }
 .comment-Author{
-    margin: auto auto;
+    text-align: center;
     margin-top: 10%;
+    width: 100%;
 }
 #headline2{
     margin-top: 20%;
-    font-size: 140%;
-    
+    font-size: 140%; 
 }
 h4 {
   font-size: 20px;
@@ -622,11 +630,9 @@ h4 {
 }
 .article-title1{
   font-size: 20px;
-
 }
 .article-title2{
   font-size: 20px;
-  
 }
 .info-desc1{
 font-size: 15px;

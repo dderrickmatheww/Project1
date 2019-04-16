@@ -7,6 +7,7 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
@@ -44,19 +45,32 @@
 
   <div class="container">
     <div class="input-group input-group-lg">
-      <div class="input-group-prepend">
+      <div class="input-group-prepend clearfix" id="searchbox">
       </div>
-      <input type="text" class="form-control bg-dark" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-        id="search" placeholder="Where we droppin'?">
-
+        <input type="text" class="form-control bg-dark" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+        id="search" placeholder="Where we droppin'?" autocomplete="on">
+      
       <button class="btn btn-warning btn-large " type="button" id="search-btn"><span>DEPLOY!</span></button>
-
+      <div id="suggestions"></div>
     </div>
 
     <div class="game-card clearfix">
-      <img class="img img-thumbnail game-logo mr-4" src="assets/images/thumbnailph.jpg">
+      <img class="img game-logo mr-4 clearfix" id="boxart" src="assets/images/thumbnailph.jpg">
 
-      <div class="w-70 game-info">
+
+
+      <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">              
+              <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <img src=""  class="imagepreview">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="game-info col-md-12">
         <h2 class="title game-title pt-2">Game Title</h2>
         <hr class="info-divider">
 
@@ -66,26 +80,29 @@
           voluptates reprehenderit.</h2>
         <div class="info">
           <h4 class="info-plat lead" style="float:left;">Platforms: <h4 class="platforms info-plat lead">
-              <i class="fab fa-windows"></i>
-              <i class="fab fa-apple"></i>
-              <i class="fab fa-linux"></i>
+              <i class="fab fa-windows" title="Windows"></i>
+              <i class="fab fa-apple" title="Mac"></i>
+              <i class="fab fa-linux" title="Linux"></i>
 
-              <i class="fab fa-playstation"></i>
-              <i class="fab fa-xbox"></i>
-              <i class="fab fa-nintendo-switch"></i>
+              <i class="fab fa-playstation" title="PlayStation"></i>
+              <i class="fab fa-xbox" title="Xbox"></i>
+              <i class="fab fa-nintendo-switch" title="Switch"></i>
 
-              <i class="fab fa-app-store"></i>
-              <i class="fab fa-google-play"></i>
+              <i class="fab fa-app-store" title="iOS"></i>
+              <i class="fab fa-google-play" title="Android"></i>
             </h4>
           </h4>
           <br>
           <!--the platforms class is for replacing platforms with appropriate ones from the API if possible-->
           <h4 class="info-release lead">Release Date: <div id="release" style="float:right"></div>
           </h4>
+          <a href="#" id="expand">
+            <h5 class="box-pop"> <i class="fas fa-expand-arrows-alt"></i> Full-resolution art</h5> 
+          </a>
         </div>
         <br>
         <div class="additional border-top border-info">
-          <h4 style="float:left" class="news-pop poplink"><i class="far fa-newspaper"></i> News <i
+          <h4 style="float:left" class="news-pop poplink"><i class="far fa-newspaper"></i> Latest News <i
               class="fas fa-angle-double-down"></i></h4>
           <!--this can be a link that creates a child div below that displays the first 1-3 news articles-->
 
@@ -105,7 +122,7 @@
 
 
     <div class="news-card clearfix border-top-0 p-3" id="news">
-
+      <h2>Top News</h2>
       <div class="article">
         <img class="img img-thumbnail article-img1 mr-4" src="assets/images/thumbnailph.jpg">
         <h3 class="title article-title1 pt-2 pl-3 headline">News Headline</h3>
@@ -151,7 +168,7 @@
           <img src="../Project1/assets/images/videogame.jpg" class="d-block w-100 pic" alt="video game image">
           <div class="carousel-caption d-none d-md-block">
             <h2 id="pic">Live info on all games!</h2>
-            <p id="pic2">Using mutliply API's from very reliable sources!</p>
+            <p id="pic2">Using multiple API's from very reliable sources!</p>
           </div>
         </div>
         <div class="carousel-item">
@@ -183,32 +200,32 @@
   
 <div class="clearfix"></div>
 
-  <div class="container">
-    <div class="comments-Section">
-      <h1 class="newsFeed text-center mt-5 pt-4 pb-4"> Comments </h1>
-      <div class="row">
-        <div class="col-6"></div>
-          <div class="col-12">      
-            <textarea class="input-Comment" placeholder="Enter a comment!"></textarea>
-          </div>   
-        <div class="col-6"></div>
-      </div>
-      <div class="row">
-        <div class="col-12"></div>
-        <div class="col-6">
-          <input placeholder="Your name" class="comment-Author">
-        </div>
-        <div class="col-6">
-          <button class="btn btn-warning btn-large float-right add-Comment mb-5" type="button">Add comment!</button>
-        </div>
-        <div class="col-3"></div>
-      </div>
+<div class="container">
+  <div class="comments-Section">
+    <h1 class="newsFeed text-center mt-5 pt-4 pb-4 mb-1" id="comments-head"> Comments </h1>
+    <div class="comment-Posts news-card mt-2 p-2">
+    
     </div>
-    <h1 class="newsFeed text-center mt-5 pt-4 pb-4"> Comments </h1>
-    <div class="comment-Posts">
+    <div class="row">
+      <div class="col-6"></div>
+        <div class="col-12">      
+          <textarea class="input-Comment" placeholder="Enter a comment!"></textarea>
+        </div>   
+      <div class="col-6"></div>
+    </div>
+    <div class="row">
+      <div class="col-12"></div>
+      <div class="col-6">
+        <input placeholder="Your name" class="comment-Author">
+      </div>
+      <div class="col-6">
+        <button class="btn btn-warning btn-large float-right add-Comment mb-5" type="button">Add comment!</button>
+      </div>
+      <div class="col-3"></div>
+    </div>
 
-    </div>
   </div>
+
 
 <footer class="footer">
   <span>Database powered by <a href="https://giantbomb.com">Giant Bomb</a><br>
@@ -222,6 +239,8 @@
   <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>  
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>

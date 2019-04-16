@@ -6,6 +6,20 @@ html{
     position:relative;
     padding-bottom:5.5rem;
 }
+
+#news{
+    display:none;
+}
+#player{
+    display:none;
+}
+.row{
+    display:none;
+}
+#comments-head{
+    display:none;
+}
+
 footer{
     text-align:center;
     background-color: #444342;
@@ -30,7 +44,7 @@ footer span{
 }
 
 .jumbotron {
-    background: url("../images/banner.png");
+    background: url("../images/banner.jpg");
     background-size: cover;
     position:relative;
     border-radius: 0;
@@ -136,6 +150,11 @@ input{
     background-color:#363534;
 }
 
+.game-info{
+    display:block;
+    height:auto;
+}
+
 .info-divider {
     background-color:skyblue;
     border-width:1px;
@@ -144,6 +163,7 @@ input{
 }
 
 .game-card {
+    display:none;
     background-image: linear-gradient(black, rgb(1, 0, 66));
     height:auto;
     margin:3rem 0rem 3rem 0rem;
@@ -247,6 +267,10 @@ h5{
 
 }
 
+.info{
+    display:block;
+}
+
 .info-release{
     color:lightslategray;
     font-size:80%;
@@ -257,16 +281,26 @@ h5{
 
 #release{
     padding-bottom:0rem !important;
-    float:right;
+
 
 }
-
-
+.modal-dialog{
+    position: relative;
+    display: table; 
+    overflow-y: auto;    
+    overflow-x: auto;
+    width: auto;
+    min-width: 300px;   
+}
 .additional{
+    position:relative;
+    bottom:0;
     border-color:skyblue;
     padding:10pt;
-    margin-top:2rem;
+    margin-top:3rem;
+    height:auto;
 }
+
 
 .article {
     padding-top:2.5em;
@@ -281,6 +315,7 @@ h5{
     border-style:solid;
     border-width:1px;
     border-color:rgba(119, 136, 153, 0.5);
+    vertical-align: text-bottom
 }
 
 .form-control {
@@ -289,6 +324,39 @@ h5{
 
 #inputGroup-sizing-lg {
     color:#fff;
+}
+
+#searchbox{
+    position:relative;
+}
+
+.ui-autocomplete {
+    background: #4a4a4a;
+    border-radius: 0px;
+    color:white;
+    cursor: pointer;
+}
+
+.ui-menu-item{
+    padding:5px;
+}
+.ui-menu-item:hover {
+    background: #363534;
+    color:skyblue;
+}
+
+.ui-menu .ui-menu-item a{
+    background:red;
+    height:10px;
+    font-size:8px;}
+
+.ui-autocomplete-loading {
+    background: #454545;
+    width:auto;
+}
+
+.ui-helper-hidden-accessible{
+    display:none !important;
 }
 
 .red::placeholder{
@@ -301,9 +369,10 @@ h5{
 
 .game-logo {
     float:left;
-    border-color: rgb(1, 0, 66);
     width:250px;
-    height:190px !important;
+    height:260px;
+    border: solid 2px darkslategray;
+    border-radius:1px;
 }
 
 .poplink {
@@ -334,12 +403,15 @@ h5{
 
 }
 
+  
 .article-img2{
     height:200px;
     max-width: 330px;
     float:left;
     vertical-align: text-top;
     clear:both;
+    margin-bottom:2rem;
+    
 }
 .news-image{
     height:200px;
@@ -349,6 +421,10 @@ h5{
     vertical-align: text-top;
     margin-right:1rem;
     
+}
+
+.front-news{
+    padding-bottom:2rem;
 }
 
 .border-bottom{
@@ -372,6 +448,7 @@ h5{
     
 }
 #pic {
+    padding-top:3%;
     padding-bottom: 3%;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:skyblue;
@@ -384,18 +461,17 @@ h5{
     text-shadow: .6pt 1.2pt 4pt black;
 }
 .vidDiv{
-    margin-top: 10%;
+    margin-top: 5%;
     border-bottom: rgb(2, 0, 128) solid 2px;
-    padding-bottom: 3%;
-    margin-bottom: 10%;
 }
 .loading {
- position: fixed; /* or absolute */
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  border: rgb(2, 0, 128) solid 2px;
-  background-image: url("../images/border1.jpg");
+    display:none;
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: rgb(2, 0, 128) solid 2px;
+    background-image: url("../images/border1.jpg");
   
 }
 .btn{
@@ -405,6 +481,7 @@ h5{
     color: white;
 }
 .load{
+    display:none;
     position: fixed; /* or absolute */
     top: 58%;
     left: 50.5%;

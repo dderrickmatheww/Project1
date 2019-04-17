@@ -576,13 +576,14 @@ $("#search").autocomplete({
                 console.log(value.platforms[key].abbreviation)
                 platformList.push(value.platforms[key].abbreviation)
               }
+              platforms = platformList.join(", ")
             }
             else{
               var platforms = "TBA"
             }
 
             return {   
-              label: value.name + " (" + date + platformList.join(', ') + ")",
+              label: value.name + " (" + date + platforms + ")",
               value: value.name,
               url: value.game_detail_url,
               id: value.guid,

@@ -341,16 +341,15 @@ h5{
 
 .ui-menu-item{
     padding:5px;
+    list-style-type: none;
+    position:relative;
+    left: -2.5rem;
 }
+
 .ui-menu-item:hover {
     background: #363534;
     color:skyblue;
 }
-
-.ui-menu .ui-menu-item a{
-    background:red;
-    height:10px;
-    font-size:8px;}
 
 .ui-autocomplete-loading {
     background: #454545;

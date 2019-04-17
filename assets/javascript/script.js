@@ -582,13 +582,13 @@ $("#search").autocomplete({
             }
 
             return {   
-              label: value.name + " (" + date + platforms + ")",
+              label: "<b>" + value.name + "</b>" + "<small> (" + date + platforms + ")</small>",
               value: value.name,
               url: value.game_detail_url,
               id: value.guid,
+              icon: value.image.tiny_url
             }
-          }
-        
+          },
         ))
         
 
@@ -718,7 +718,13 @@ $("#search").autocomplete({
       commentsRender();
         
       })
-  }});
+  }}).data("ui-autocomplete" )._renderItem = function( ul, item ) {
+    return $( "<li></li>" )
+        .data( "item.autocomplete", item )
+        .append("<img src='" + item.icon + "'>"+ "&#8194;" + item.label) 
+        .appendTo( ul );
+        
+};;
 
 
 

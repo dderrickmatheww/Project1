@@ -564,21 +564,25 @@ $("#search").autocomplete({
           response($.map(results, function (value, key) {
 
             if (value.original_release_date){
-              var date = ", " + value.original_release_date.slice(-30, -15);
+              var date = value.original_release_date.slice(-30, -15) + " / ";
             }
             else{
-              var date = ", Unreleased"
+              var date = "Unreleased / "
             }
 
             if (value.platforms){
-              var platforms = value.platforms[0].name
+              platformList = []
+              for (var key in value.platforms){
+                console.log(value.platforms[key].abbreviation)
+                platformList.push(value.platforms[key].abbreviation)
+              }
             }
             else{
               var platforms = "TBA"
             }
 
             return {   
-              label: value.name + " (" + platforms + date + ")",
+              label: value.name + " (" + date + platformList.join(', ') + ")",
               value: value.name,
               url: value.game_detail_url,
               id: value.guid,

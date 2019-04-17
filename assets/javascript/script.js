@@ -573,7 +573,6 @@ $("#search").autocomplete({
             if (value.platforms){
               platformList = []
               for (var key in value.platforms){
-                console.log(value.platforms[key].abbreviation)
                 platformList.push(value.platforms[key].abbreviation)
               }
               platforms = platformList.join(", ")

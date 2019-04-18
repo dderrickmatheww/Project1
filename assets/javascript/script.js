@@ -6,6 +6,7 @@ var lastAuthor = "";
 var game = "";
 var gameExists;
 var suggestInput = "";
+var noResults = false;
 
 
 //********************************************************************************************************************************************************************************* */
@@ -588,9 +589,21 @@ $("#search").autocomplete({
               id: value.guid,
               icon: value.image.tiny_url
             }
+            
           },
+          
         ))
-        
+        if (!results.length) {
+          console.log("No results")
+          $("#search").val("")
+          $(".form-control").attr("placeholder", "No results found");
+          $(".form-control").addClass("red");
+          $('.spinner').hide();
+        }
+        else{
+          $(".form-control").attr("placeholder", "Where we droppin'?");
+          $(".form-control").removeClass("red");
+        }
 
         });
     },

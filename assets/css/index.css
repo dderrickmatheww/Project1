@@ -344,12 +344,13 @@ h5{
     list-style-type: none;
     position:relative;
     left: -2.5rem;
+    transition: left ease 0.5s;
 }
 
 .ui-menu-item:hover {
     background: #363534;
     color:skyblue;
-    left: -2rem;
+    left:-2rem;
     text-shadow: .6pt 1.2pt 1.1pt #000000;
     font-size:110%;
 }

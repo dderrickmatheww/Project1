@@ -265,9 +265,11 @@ h5{
     color:lightslategray;
     font-size:80%;
     padding-right:1rem;
-
 }
-
+.platforms{
+    position:relative;
+    left:-.5rem;
+}
 .info{
     display:block;
 }
@@ -369,9 +371,6 @@ h5{
     height:24px;
 }
 
-.ui-helper-hidden-accessible{
-    display:none !important;
-}
 
 .red::placeholder{
     color:red;

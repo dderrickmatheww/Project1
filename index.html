@@ -2,6 +2,7 @@
 
 <head>
   <!-- Required meta tags -->
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -11,15 +12,19 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+
+
   <!-- Link to the current version of Boostrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
   <!-- Link to the current CSS file -->
-  <link rel="stylesheet" href="assets/css/index.css">
+
 
   <!-- Link to add a favicon to the tab of the game -->
   <link href="assets/images/favicon.ico" rel="icon" type="image/x-icon" />
+  <link rel="stylesheet" href="assets/css/index.css">
 
   <!-- Page Title -->
   <title> Hot Drop </title>
@@ -33,54 +38,85 @@
     </a>
     <br>
     <h3 id="headline2">Get the hottest gaming news here! </h3>
-    <nav>
-      <div class="nav-wrapper">
-        <ul>
-          <li class="logged-in">
+  </div>
+  <div class="borderImage"></div>
+  </div>
 
-          </li>
-          <li class="logged-in">
-            
-          </li>
-        </ul>
+
+  <div class="container">
+    <div class="row text-center mt-3">
+      <div class="col-6">
+        <button id="login" class="btn" data-toggle="modal" data-target="#exampleModal">Login</button>
       </div>
-    </nav>
+      <div class="col-6">
+        <button id="logout" class="btn">Logout</button>
+      </div>
+    </div>
   </div>
+  <div>
 
-  <div>
-    <div class="borderImage"></div>
-  </div>
-  <div>
+
     <img src="../Project1/assets/images/carepackage.gif" class="loading mx-auto">
     <p class="load text-center">Loading</p>
   </div>
 
-  <div class="container">
-    <div class="input-group input-group-lg">
-      <div class="input-group-prepend clearfix" id="searchbox">
-      </div>
-        <input type="text" class="form-control bg-dark" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-        id="search" placeholder="Where we droppin'?" autocomplete="on">
-      
-      <button class="btn btn-warning btn-large " type="button" id="search-btn"><span>DEPLOY!</span></button>
-      <div id="suggestions"></div>
-    </div>
+  <div class="modal fade sign-in" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true" data-dismiss="modal">
 
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign in or Create Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+
+        <div class="container-fluid" id="firebaseui-auth-container"></div>
+
+        <div class="container-fluid" id="loader">Loading...</div>
+
+
+
+      </div>
+    </div>
+  </div>
+ 
+
+
+  <div class="container">
+    <div class="row row2">
+      <div class="col-10">
+        <div class="input-group input-group-md float-left">
+          <div class="input-group-prepend float-right" id="searchbox">
+          </div>
+          <input type="text" class="form-control bg-dark" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+            id="search" placeholder="Where we droppin'?" autocomplete="on">
+        </div>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-warning btn-large " type="button" id="search-btn"><span>DEPLOY!</span></button>
+        <div id="suggestions"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
     <div class="game-card clearfix">
       <img class="img game-logo mr-4 clearfix" id="boxart" src="assets/images/thumbnailph.jpg">
 
-
-
-      <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">              
-              <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <img src=""  class="imagepreview">
-              </div>
+      <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                  class="sr-only">Close</span></button>
+              <img src="" class="imagepreview">
             </div>
           </div>
         </div>
+      </div>
 
       <div class="game-info col-md-12">
         <h2 class="title game-title pt-2">Game Title</h2>
@@ -109,7 +145,7 @@
           <h4 class="info-release lead">Release Date: <div id="release" style="float:right"></div>
           </h4>
           <a href="#" id="expand">
-            <h5 class="box-pop"> <i class="fas fa-expand-arrows-alt"></i> Full-resolution art</h5> 
+            <h5 class="box-pop"> <i class="fas fa-expand-arrows-alt"></i> Full-resolution art</h5>
           </a>
         </div>
         <br>
@@ -121,9 +157,6 @@
           <!--displays YT API info in a similar fashion as news-->
           <h4 style="float:right" class="yt-pop poplink"><i class="fab fa-youtube"></i> YouTube <i
               class="fas fa-angle-double-down"></i></h4>
-
-
-
 
         </div>
 
@@ -202,65 +235,79 @@
     </div>
   </div>
 
-    <div class="ignArticles container">
-      
-      <h1 class="newsFeed text-center mt-5 pb-4"> News feed! </h1>
-      <div class="container" id="player2">
-        <!--vidDiv here for articles-->
+  <div class="ignArticles container">
+
+    <h1 class="newsFeed text-center mt-5 pb-4"> News feed! </h1>
+    <div class="container" id="player2">
+      <!--vidDiv here for articles-->
     </div>
   </div>
-  
-<div class="clearfix"></div>
 
-<div class="container text-center">
-  <div class="comments-Section">
-    <h1 class="newsFeed text-center mt-5 pt-4 pb-4 mb-1" id="comments-head"> Comments </h1>
-    <div class="comment-Posts news-card mt-2 p-2">
-    
-    </div>
-    <div class="row">
-      
-        <div class="col-12">      
+  <div class="clearfix"></div>
+
+  <div class="container text-center">
+    <div class="comments-Section">
+      <h1 class="newsFeed text-center mt-5 pt-4 pb-4 mb-1" id="comments-head"> Comments </h1>
+      <div class="comment-Posts news-card mt-2 p-2">
+
+      </div>
+      <div class="row row1">
+
+        <div class="col-12">
           <textarea class="input-Comment" placeholder="Enter a comment!"></textarea>
-        </div>   
-      
-    </div>
-    <div class="row">
-      
-      <div class="col-12">
-        <input placeholder="Your name" class="comment-Author">
-      </div>
-      <div class="col-12">
-        <button class="btn btn-warning btn-large add-Comment mb-5" type="button">Add comment!</button>
-      </div>
-      <!-- <div class="col-12"></div> -->
-    </div>
+        </div>
 
+      </div>
+      <div class="row row1">
+
+        <div class="col-12">
+          <input placeholder="Your name" class="comment-Author">
+        </div>
+        <div class="col-12">
+          <button class="btn btn-warning btn-large add-Comment mb-5" type="button">Add comment!</button>
+        </div>
+        <!-- <div class="col-12"></div> -->
+      </div>
+
+    </div>
   </div>
-</div>
 
-<footer class="footer">
-  <span>Database powered by <a href="https://giantbomb.com">Giant Bomb</a><br>
-  News feed powered by <a href="https://ign.com">IGN</a></span>
-</footer>
+  <footer class="footer">
+    <span>Database powered by <a href="https://giantbomb.com">Giant Bomb</a><br>
+      News feed powered by <a href="https://ign.com">IGN</a></span>
+  </footer>
 
 
   <!-- Optional JavaScript -->
 
-  <!-- Firebase initialization script--> 
-  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+  <!-- Firebase initialization script-->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
+
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+  <script src="assets/javascript/auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
   <script src="assets/javascript/script.js"></script>
 
+  <script src=" https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
 
 </body>
 

@@ -38,8 +38,12 @@ var suggestInput = "";
 
   var gameRef = firebase.database().ref(`game`);
   
-  $(".add-Comment").on("click", function (){
+  
+  
     
+
+  $(".add-Comment").on("click", function (){
+   
     console.log("Add comment clicked!");
     lastComment = $(".input-Comment").val().trim();
     lastAuthor = $(".comment-Author").val().trim();
@@ -54,7 +58,9 @@ var suggestInput = "";
     });
     console.log("Game: " + game);
     console.log("Existing" + gameExists);
-    
+    auth.onAuthStateChanged(user => { 
+      if (user) {
+       
     // If the comment is not blank
     if (lastComment != "") {
       $(".input-Comment").attr("placeholder", "Enter a comment!");
@@ -67,7 +73,7 @@ var suggestInput = "";
           $(".comment-Author").attr("placeholder", "Your name");
           $(".comment-Author").removeClass("red");
   
-  
+          
           //check and see if the game exists in Firebase.Database
           
             if (gameExists) {
@@ -103,7 +109,18 @@ var suggestInput = "";
         return false
   
       };
+    } else {
+       
+      $(".comment-Author").val("");
+      $(".input-Comment").val("");
+      setTimeout(function() {
+        $(".input-Comment").attr("placeholder", "Sign in to post comments!");
+        }, 2000);
+      
+    }
+  })
     });
+ 
 
 
 function commentsRender(){
@@ -126,7 +143,7 @@ function commentsRender(){
     console.log("Errors handled: " + errorObject.code);
   })
     
-}
+} 
 
 
 //************************************************************************************************************************************************************************************ */
@@ -710,5 +727,9 @@ $("#search").autocomplete({
       })
   }});
 
+//******************************************************************************************************************************************************************************************************* */
+//AUTH SYSTEMS -- MODALS ETC.
+//***************************************************************************************************************************************************************************************************************** */
 
+// setup materialize components
 

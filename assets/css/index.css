@@ -101,7 +101,6 @@ input{
 #search-btn, #search, .add-Comment, #login, #logout {
     font-weight:bolder;
     font-size:18pt;
-    margin-top: 20px;
     z-index:2
 }
 #login, #logout {
@@ -151,7 +150,9 @@ input{
 .input-Comment {
     border-radius: 5px;
 }
-
+.input-group{
+    margin-top:2rem;
+}
 .bg-light {
  background-color: lightcyan!important;
 }
@@ -279,9 +280,11 @@ h5{
     color:lightslategray;
     font-size:80%;
     padding-right:1rem;
-
 }
-
+.platforms{
+    position:relative;
+    left:-.5rem;
+}
 .info{
     display:block;
 }
@@ -350,29 +353,39 @@ h5{
     border-radius: 0px;
     color:white;
     cursor: pointer;
+    z-index:999;
 }
 
 .ui-menu-item{
     padding:5px;
+    list-style-type: none;
+    position:relative;
+    left: -2.5rem;
+    transition: left ease 0.5s;
 }
+
 .ui-menu-item:hover {
     background: #363534;
     color:skyblue;
+    left:-2rem;
+    text-shadow: .6pt 1.2pt 1.1pt #000000;
+    font-size:110%;
 }
-
-.ui-menu .ui-menu-item a{
-    background:red;
-    height:10px;
-    font-size:8px;}
 
 .ui-autocomplete-loading {
     background: #454545;
     width:auto;
 }
 
-.ui-helper-hidden-accessible{
-    display:none !important;
+.spinner{
+    display:none;
+    position:absolute;
+    top:1rem;
+    right: 9rem;
+    z-index:5;
+    height:24px;
 }
+
 
 .red::placeholder{
     color:red;
@@ -480,6 +493,7 @@ h5{
     border-bottom: rgb(2, 0, 128) solid 2px;
 }
 .loading {
+    z-index:1000;
     display:none;
     position: fixed; /* or absolute */
     top: 50%;
@@ -496,6 +510,7 @@ h5{
     color: white;
 }
 .load{
+    z-index:1000;
     display:none;
     position: fixed; /* or absolute */
     top: 58%;
@@ -562,12 +577,14 @@ h5{
     }
     
     .load{
+        z-index:1000;
         position: fixed; /* or absolute */
         top: 60%;
         left: 41%;
         color: white;
     }
     .loading {
+        z-index:1000;
         position: fixed; /* or absolute */
          top: 50%;
          left: 40%;
@@ -590,6 +607,7 @@ h5{
     margin-top: 20px;
     z-index:2
 }
+
 .row2 {
     width: 90%;
     padding: 1%;
@@ -609,16 +627,18 @@ h5{
     margin-left: 0px;   
     margin-top: 10%;
     width: 100%;
-    
-}
+  } 
+
+
+
 .comment-Author{
-    text-align: center;
+    margin: auto auto;
     margin-top: 10%;
-    width: 100%;
 }
 #headline2{
     margin-top: 20%;
-    font-size: 140%; 
+    font-size: 140%;
+    
 }
 h4 {
   font-size: 20px;
@@ -639,9 +659,11 @@ h4 {
 }
 .article-title1{
   font-size: 20px;
+
 }
 .article-title2{
   font-size: 20px;
+  
 }
 .info-desc1{
 font-size: 15px;
@@ -662,6 +684,7 @@ font-size: 15px;
 .poplink{
 padding-right: 0;
 }
+
 .sign-in {
     
     top: 40%;
@@ -670,5 +693,16 @@ padding-right: 0;
     
 }
 
+.spinner{
+    display:none;
+    position:absolute;
+    top:1.8rem;
+    right: 6rem;
+    z-index:5;
+    height:24px;
 }
+  .imagepreview{
+    max-width: 50vh;   
 
+}
+}

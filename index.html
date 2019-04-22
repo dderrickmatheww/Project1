@@ -92,12 +92,12 @@
           <div class="input-group-prepend float-right" id="searchbox">
           </div>
           <input type="text" class="form-control bg-dark" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-            id="search" placeholder="Where we droppin'?" autocomplete="on">
+        id="search" placeholder="Where we droppin'?" autocomplete="on"><img class="spinner" src="assets/images/suggest-loading.gif">
         </div>
       </div>
       <div class="col-2">
-        <button class="btn btn-warning btn-large " type="button" id="search-btn"><span>DEPLOY!</span></button>
-        <div id="suggestions"></div>
+         <button class="btn btn-warning btn-large " type="button" id="search-btn"><span>DEPLOY!</span></button>
+      <div id="suggestions"></div>
       </div>
     </div>
   </div>
@@ -119,15 +119,12 @@
       </div>
 
       <div class="game-info col-md-12">
-        <h2 class="title game-title pt-2">Game Title</h2>
+        <h2 class="title game-title pt-2"></h2>
         <hr class="info-divider">
 
-        <h2 class="info-desc lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda veritatis
-          distinctio minus, provident quisquam quas
-          velit placeat molestiae omnis. Animi tempore atque, veniam doloribus necessitatibus corporis illo. Omnis,
-          voluptates reprehenderit.</h2>
+        <h2 class="info-desc lead"></h2>
         <div class="info">
-          <h4 class="info-plat lead" style="float:left;">Platforms: <h4 class="platforms info-plat lead">
+          <h4 class="info-plat lead" style="float:left;">Platforms:<h4 class="platforms info-plat lead">&thinsp;
               <i class="fab fa-windows" title="Windows"></i>
               <i class="fab fa-apple" title="Mac"></i>
               <i class="fab fa-linux" title="Linux"></i>
@@ -142,7 +139,7 @@
           </h4>
           <br>
           <!--the platforms class is for replacing platforms with appropriate ones from the API if possible-->
-          <h4 class="info-release lead">Release Date: <div id="release" style="float:right"></div>
+          <h4 class="info-release lead">Release Date:&nbsp;<div id="release" style="float:right"></div>
           </h4>
           <a href="#" id="expand">
             <h5 class="box-pop"> <i class="fas fa-expand-arrows-alt"></i> Full-resolution art</h5>
@@ -170,18 +167,17 @@
       <h2>Top News</h2>
       <div class="article">
         <img class="img img-thumbnail article-img1 mr-4" src="assets/images/thumbnailph.jpg">
-        <h3 class="title article-title1 pt-2 pl-3 headline">News Headline</h3>
+        <h3 class="title article-title1 pt-2 pl-3 headline"></h3>
         <h3 class="author1 lead"></h3>
-        <h2 class="info-desc1 lead">wow this is the tenth article arguing about whether FromSoft games should have easy
-          modes. maybe????</h2>
+        <h2 class="info-desc1 lead"></h2>
         <div class="readmore1"></div>
       </div>
 
       <div class="article">
         <img class="img img-thumbnail article-img2 mr-4" src="assets/images/thumbnailph.jpg">
-        <h3 class="title article-title2 pt-2 pl-3 headline">Another Headline</h3>
+        <h3 class="title article-title2 pt-2 pl-3 headline"></h3>
         <h3 class="author2 lead"></h3>
-        <h2 class="info-desc2 lead">here's top ten tips to do a thing</h2>
+        <h2 class="info-desc2 lead"></h2>
         <div class="readmore2"></div>
       </div>
 
@@ -243,34 +239,30 @@
     </div>
   </div>
 
-  <div class="clearfix"></div>
+<div class="clearfix"></div>
 
-  <div class="container text-center">
-    <div class="comments-Section">
-      <h1 class="newsFeed text-center mt-5 pt-4 pb-4 mb-1" id="comments-head"> Comments </h1>
-      <div class="comment-Posts news-card mt-2 p-2">
-
-      </div>
-      <div class="row row1">
-
-        <div class="col-12">
+<div class="container">
+  <div class="comments-Section">
+    <h1 class="newsFeed text-center mt-5 pt-4 pb-4 mb-1" id="comments-head"> Comments </h1>
+    <div class="comment-Posts news-card mt-2 p-2">
+    
+    </div>
+    <div class="row">
+      <div class="col-6"></div>
+        <div class="col-12">      
           <textarea class="input-Comment" placeholder="Enter a comment!"></textarea>
-        </div>
-
-      </div>
-      <div class="row row1">
-
-        <div class="col-12">
-          <input placeholder="Your name" class="comment-Author">
-        </div>
-        <div class="col-12">
-          <button class="btn btn-warning btn-large add-Comment mb-5" type="button">Add comment!</button>
-        </div>
-        <!-- <div class="col-12"></div> -->
-      </div>
-
+        </div>   
+      <div class="col-6"></div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <input placeholder="Your name" class="comment-Author">
+        <button class="btn btn-warning btn-large float-right add-Comment mb-5" type="button">Add comment!</button>
+    </div>
+    </div>
     </div>
   </div>
+
 
   <footer class="footer">
     <span>Database powered by <a href="https://giantbomb.com">Giant Bomb</a><br>
@@ -280,9 +272,14 @@
 
   <!-- Optional JavaScript -->
 
+
   <!-- Firebase initialization script-->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+  <!-- Firebase initialization script--> 
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>  
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

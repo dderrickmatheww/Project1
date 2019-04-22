@@ -6,6 +6,7 @@ var lastAuthor = "";
 var game = "";
 var gameExists;
 var suggestInput = "";
+var noResults = false;
 
 
 //********************************************************************************************************************************************************************************* */
@@ -145,7 +146,6 @@ function commentsRender(){
     
 } 
 
-
 //************************************************************************************************************************************************************************************ */
 //NEWS API FOR OUR NEWS DROP DOWN
 //************************************************************************************************************************************************************************************ */
@@ -209,11 +209,9 @@ $("#search-btn").on("click", function (event) {
   
   event.preventDefault();
   
-  $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
-  $(".bd-example").hide()
   $(".comments-Section").show();
   $("#comments-head").show()
-  $(".comment-Posts").empty();
+
 
 
   if ($("#search").val().trim() === ""){
@@ -225,6 +223,9 @@ $("#search-btn").on("click", function (event) {
   }
   $(".form-control").attr("placeholder", "Where we droppin'?");
   $(".form-control").removeClass("red");
+  $(".bd-example").hide()
+  $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
+  $(".comment-Posts").empty();
 
   $(".ignArticles").hide()
   $(".loading").show();
@@ -581,34 +582,56 @@ $("#search").autocomplete({
           response($.map(results, function (value, key) {
 
             if (value.original_release_date){
-              var date = ", " + value.original_release_date.slice(-30, -15);
+              var date = value.original_release_date.slice(-30, -15) + " / ";
             }
             else{
-              var date = ", Unreleased"
+              var date = "Unreleased / "
             }
 
             if (value.platforms){
-              var platforms = value.platforms[0].name
+              platformList = []
+              for (var key in value.platforms){
+                platformList.push(value.platforms[key].abbreviation)
+              }
+              platforms = platformList.join(", ")
             }
             else{
               var platforms = "TBA"
             }
 
             return {   
-              label: value.name + " (" + platforms + date + ")",
+              label: "<b>" + value.name + "</b>" + "<small> (" + date + platforms + ")</small>",
               value: value.name,
               url: value.game_detail_url,
               id: value.guid,
+              icon: value.image.tiny_url
             }
-          }
-        
+            
+          },
+          
         ))
-        
+        if (!results.length) {
+          console.log("No results")
+          $("#search").val("")
+          $(".form-control").attr("placeholder", "No results found");
+          $(".form-control").addClass("red");
+          $('.spinner').hide();
+        }
+        else{
+          $(".form-control").attr("placeholder", "Where we droppin'?");
+          $(".form-control").removeClass("red");
+        }
 
         });
     },
     
     minLength: 3,
+    search: function(event, ui) { 
+      $('.spinner').show();
+    },
+    open: function(event, ui) {
+      $('.spinner').hide();
+    },
     select: function(event, ui) {
 
       $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
@@ -725,7 +748,12 @@ $("#search").autocomplete({
       commentsRender();
         
       })
-  }});
-
+  }}).data("ui-autocomplete" )._renderItem = function( ul, item ) {
+    return $( "<li></li>" )
+        .data( "item.autocomplete", item )
+        .append("<img src='" + item.icon + "'>"+ "&#8194;" + item.label) 
+        .appendTo( ul );
+        
+};;
 
 

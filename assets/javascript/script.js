@@ -39,8 +39,12 @@ var noResults = false;
 
   var gameRef = firebase.database().ref(`game`);
   
-  $(".add-Comment").on("click", function (){
+  
+  
     
+
+  $(".add-Comment").on("click", function (){
+   
     console.log("Add comment clicked!");
     lastComment = $(".input-Comment").val().trim();
     lastAuthor = $(".comment-Author").val().trim();
@@ -55,7 +59,9 @@ var noResults = false;
     });
     console.log("Game: " + game);
     console.log("Existing" + gameExists);
-    
+    auth.onAuthStateChanged(user => { 
+      if (user) {
+       
     // If the comment is not blank
     if (lastComment != "") {
       $(".input-Comment").attr("placeholder", "Enter a comment!");
@@ -68,7 +74,7 @@ var noResults = false;
           $(".comment-Author").attr("placeholder", "Your name");
           $(".comment-Author").removeClass("red");
   
-  
+          
           //check and see if the game exists in Firebase.Database
           
             if (gameExists) {
@@ -104,7 +110,18 @@ var noResults = false;
         return false
   
       };
+    } else {
+       
+      $(".comment-Author").val("");
+      $(".input-Comment").val("");
+      setTimeout(function() {
+        $(".input-Comment").attr("placeholder", "Sign in to post comments!");
+        }, 2000);
+      
+    }
+  })
     });
+ 
 
 
 function commentsRender(){
@@ -127,7 +144,7 @@ function commentsRender(){
     console.log("Errors handled: " + errorObject.code);
   })
     
-}
+} 
 
 //************************************************************************************************************************************************************************************ */
 //NEWS API FOR OUR NEWS DROP DOWN

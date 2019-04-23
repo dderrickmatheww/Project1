@@ -13,11 +13,22 @@ html{
 #player{
     display:none;
 }
-.row{
+.row1{
     display:none;
 }
 #comments-head{
     display:none;
+}
+.sign-in {
+
+    margin-right: auto;
+    margin-left: auto;
+    top: 40%;
+    
+}
+.modal-content {
+    border: none;
+    padding: 0;
 }
 
 footer{
@@ -87,12 +98,15 @@ input{
     height: 8px;   
 }
 
-#search-btn, #search, .add-Comment {
+#search-btn, #search, .add-Comment, #login, #logout {
     font-weight:bolder;
     font-size:18pt;
     z-index:2
 }
-#search-btn, .add-Comment{
+#login, #logout {
+    margin-bottom: 20px;
+}
+#search-btn, .add-Comment, #login, #logout{
     text-shadow:
     -1px -1px 0 #000,  
      1px -1px 0 #000,
@@ -154,6 +168,7 @@ input{
 .game-info{
     display:block;
     height:auto;
+    
 }
 
 .info-divider {
@@ -593,9 +608,29 @@ h5{
     z-index:2
 }
 
-.add-Comment{
-    margin-top:10%;
+.row2 {
+    width: 90%;
+    padding: 1%;
+    
 }
+#search-btn{
+    margin-left: 10%;
+    height: 5%;
+    right: 10px;
+}
+#searchbox{
+
+    margin-left: 0%;
+    padding-left: 0%;
+}
+.add-Comment {
+    margin-left: 0px;   
+    margin-top: 10%;
+    width: 100%;
+  } 
+
+
+
 .comment-Author{
     margin: auto auto;
     margin-top: 10%;
@@ -649,9 +684,15 @@ font-size: 15px;
 .poplink{
 padding-right: 0;
 }
-.imagepreview{
-    max-width: 50vh;   
+
+.sign-in {
+    
+    top: 40%;
+    margin-right: auto;
+    margin-left: auto;
+    
 }
+
 .spinner{
     display:none;
     position:absolute;
@@ -659,5 +700,9 @@ padding-right: 0;
     right: 6rem;
     z-index:5;
     height:24px;
+}
+  .imagepreview{
+    max-width: 50vh;   
+
 }
 }

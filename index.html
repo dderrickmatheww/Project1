@@ -46,10 +46,10 @@
   <div class="container">
     <div class="row text-center mt-3">
       <div class="col-6">
-        <button id="login" class="btn" data-toggle="modal" data-target="#exampleModal">Login</button>
+        <button id="login" class="btn" data-toggle="modal" data-target="#exampleModal"><span>Login</span></button>
       </div>
       <div class="col-6">
-        <button id="logout" class="btn">Logout</button>
+        <button id="logout" class="btn"><span>Logout</span></button>
       </div>
     </div>
   </div>
@@ -86,21 +86,16 @@
 
 
   <div class="container">
-    <div class="row row2">
-      <div class="col-10">
-        <div class="input-group input-group-md float-left">
-          <div class="input-group-prepend float-right" id="searchbox">
-          </div>
-          <input type="text" class="form-control bg-dark" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+    <div class="input-group input-group-lg">
+      <div class="input-group-prepend clearfix" id="searchbox">
+      </div>
+        <input type="text" class="form-control bg-dark" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
         id="search" placeholder="Where we droppin'?" autocomplete="on"><img class="spinner" src="assets/images/suggest-loading.gif">
-        </div>
-      </div>
-      <div class="col-2">
-         <button class="btn btn-warning btn-large " type="button" id="search-btn"><span>DEPLOY!</span></button>
+      
+      <button class="btn btn-warning btn-large " type="button" id="search-btn"><span>DEPLOY!</span></button>
       <div id="suggestions"></div>
-      </div>
     </div>
-  </div>
+
   <div class="container">
     <div class="game-card clearfix">
       <img class="img game-logo mr-4 clearfix" id="boxart" src="assets/images/thumbnailph.jpg">

@@ -143,6 +143,9 @@ input{
 #search-btn1{
     margin:auto auto;
 }
+#search-btn{
+    top: 30px;
+}
 .comment-Author{
     height: 40px;
     border-radius: 5px;
@@ -381,9 +384,10 @@ h5{
     display:none;
     position:absolute;
     top:1rem;
-    right: 9rem;
+    right: 1rem;
     z-index:5;
     height:24px;
+    
 }
 
 
@@ -617,6 +621,7 @@ h5{
     margin-left: 10%;
     height: 5%;
     right: 10px;
+    top: 30px;
 }
 #searchbox{
 
@@ -696,10 +701,10 @@ padding-right: 0;
 .spinner{
     display:none;
     position:absolute;
-    top:1.8rem;
-    right: 6rem;
+    top:1.6rem;
+    right: .5rem;
     z-index:5;
-    height:24px;
+    height:22px;
 }
   .imagepreview{
     max-width: 50vh;   

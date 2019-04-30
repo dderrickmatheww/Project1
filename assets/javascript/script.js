@@ -117,6 +117,7 @@ var noResults = false;
       setTimeout(function() {
         $(".input-Comment").attr("placeholder", "Sign in to post comments!");
         }, 2000);
+        return false;
       
     }
   })
@@ -754,6 +755,6 @@ $("#search").autocomplete({
         .append("<img src='" + item.icon + "'>"+ "&#8194;" + item.label) 
         .appendTo( ul );
         
-};;
+};
 
 

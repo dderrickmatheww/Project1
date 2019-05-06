@@ -580,6 +580,18 @@ $("#search").autocomplete({
           url: suggestURL,
         }).done(function(data) {
           results = data.results
+
+          if(!results.length){
+            var result = [
+             {
+              label: 'No matches found', 
+              value: response.term,
+              icon: "./assets/images/favicon.ico"
+             }
+           ];
+             response(result);
+           } else {
+
           response($.map(results, function (value, key) {
 
             if (value.original_release_date){
@@ -610,18 +622,8 @@ $("#search").autocomplete({
             
           },
           
-        ))
-        if (!results.length) {
-          console.log("No results")
-          $("#search").val("")
-          $(".form-control").attr("placeholder", "No results found");
-          $(".form-control").addClass("red");
-          $('.spinner').hide();
-        }
-        else{
-          $(".form-control").attr("placeholder", "Where we droppin'?");
-          $(".form-control").removeClass("red");
-        }
+        ))}
+
 
         });
     },

@@ -238,6 +238,7 @@ $("#search-btn").on("click", function (event) {
       $("#search").val("")
       $(".form-control").attr("placeholder", "No results found");
       $(".form-control").addClass("red");
+      $('.spinner').hide();
     }
     else {
     console.log(results)

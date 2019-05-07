@@ -222,27 +222,7 @@ $("#search-btn").on("click", function (event) {
 
     return false;
   }
-  $(".form-control").attr("placeholder", "Where we droppin'?");
-  $(".form-control").removeClass("red");
-  $(".bd-example").hide()
-  $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
-  $(".comment-Posts").empty();
-
-  $(".ignArticles").hide()
-  $(".loading").show();
-  setTimeout(function() { $(".loading").hide(); }, 4000);
-  $(".load").show();
-  setTimeout(function() { $(".load").hide(); }, 4000);
-
   var input = $("#search").val();
-  $("#player").empty();
-  $('#player').hide()
-  $(".game-card").show()
-  $('.instruct').hide()
-  $("#news").hide()
-
-  $(".row").show()
-  $(".comments-Section").show()
   
   $.ajax({
     type: 'GET',
@@ -252,6 +232,15 @@ $("#search-btn").on("click", function (event) {
     url: 'https://www.giantbomb.com/api/search/?format=jsonp&api_key=99ec1d8980f419c59250e12a72f3b31d084e9bf9&query=' + input + "&resources=game"
   }).then(function (data) {
     results = data.results
+
+    if (!results.length) {
+      console.log("No results")
+      $("#search").val("")
+      $(".form-control").attr("placeholder", "No results found");
+      $(".form-control").addClass("red");
+      $('.spinner').hide();
+    }
+    else {
     console.log(results)
     var name = results[0].name
     var image = results[0].image.medium_url
@@ -259,6 +248,28 @@ $("#search-btn").on("click", function (event) {
     var releaseDate = results[0].original_release_date
     var futureRelease = results[0].expected_release_year
     var nothere = "TBA"
+
+    $(".form-control").attr("placeholder", "Where we droppin'?");
+    $(".form-control").removeClass("red");
+    $(".bd-example").hide()
+    $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
+    $(".comment-Posts").empty();
+  
+    $(".ignArticles").hide()
+    $(".loading").show();
+    setTimeout(function() { $(".loading").hide(); }, 4000);
+    $(".load").show();
+    setTimeout(function() { $(".load").hide(); }, 4000);
+  
+    $("#player").empty();
+    $('#player').hide()
+    $(".game-card").show()
+    $('.instruct').hide()
+    $("#news").hide()
+  
+    $(".row").show()
+    $(".comments-Section").show()
+
  $(".fa-playstation").hide();
  $(".fa-windows").hide();
  $(".fa-xbox").hide();
@@ -328,7 +339,7 @@ $("#search-btn").on("click", function (event) {
     topNews();
 
     commentsRender();
-
+  }
   })
   });
 
@@ -580,6 +591,20 @@ $("#search").autocomplete({
           url: suggestURL,
         }).done(function(data) {
           results = data.results
+
+          if(!results.length){
+            noResults = true;
+            var result = [
+             {
+              label: 'No matches found', 
+              value: response.term,
+              icon: "./assets/images/favicon.ico"
+             }
+
+           ];
+             response(result);
+           } else {
+          noResults = false;
           response($.map(results, function (value, key) {
 
             if (value.original_release_date){
@@ -610,18 +635,8 @@ $("#search").autocomplete({
             
           },
           
-        ))
-        if (!results.length) {
-          console.log("No results")
-          $("#search").val("")
-          $(".form-control").attr("placeholder", "No results found");
-          $(".form-control").addClass("red");
-          $('.spinner').hide();
-        }
-        else{
-          $(".form-control").attr("placeholder", "Where we droppin'?");
-          $(".form-control").removeClass("red");
-        }
+        ))}
+
 
         });
     },
@@ -634,6 +649,16 @@ $("#search").autocomplete({
       $('.spinner').hide();
     },
     select: function(event, ui) {
+      if (noResults) {
+        console.log("No results")
+        $("#search").val("")
+        $(".form-control").attr("placeholder", "No results found");
+        $(".form-control").addClass("red");
+      } else {
+
+      $(".form-control").attr("placeholder", "Where we droppin'?");
+      $(".form-control").removeClass("red");
+      
 
       $(".game-logo").attr("src", "assets/images/thumbnailph.jpg")
 
@@ -748,7 +773,7 @@ $("#search").autocomplete({
       
       commentsRender();
         
-      })
+      })}
   }}).data("ui-autocomplete" )._renderItem = function( ul, item ) {
     return $( "<li></li>" )
         .data( "item.autocomplete", item )

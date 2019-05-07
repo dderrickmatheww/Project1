@@ -710,4 +710,9 @@ padding-right: 0;
     max-width: 50vh;   
 
 }
+#login, #logout, #store {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
 }

@@ -98,15 +98,15 @@ input{
     height: 8px;   
 }
 
-#search-btn, #search, .add-Comment, #login, #logout {
+#search-btn, #search, .add-Comment, #login, #logout, #store {
     font-weight:bolder;
     font-size:18pt;
     z-index:2
 }
-#login, #logout {
+#login, #logout, #store {
     margin-bottom: 20px;
 }
-#search-btn, .add-Comment, #login, #logout{
+#search-btn, .add-Comment, #login, #logout, #store{
     text-shadow:
     -1px -1px 0 #000,  
      1px -1px 0 #000,
@@ -116,7 +116,7 @@ input{
     margin-left: 5px;    
 }
 
-#search-btn:hover, .add-Comment:hover{
+#search-btn:hover, .add-Comment:hover, #login:hover, #logout:hover, #store:hover{
     color:black;
     text-shadow:
     -1px -1px 0 yellow,  

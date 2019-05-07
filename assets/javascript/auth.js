@@ -63,10 +63,19 @@ ui.start('#firebaseui-auth-container', uiConfig);
     if (user) {
       console.log('user logged in: ', user);
       $("#login").hide()
+      $("#logout").removeClass('col-4')
+      $("#store").removeClass('col-4')
+      $("#logout").addClass('col-6')
+      $("#store").addClass('col-6')
+      
     } else {
       console.log('user logged out');
       $("#login").show()
-      $("#login")
+      
+      $("#logout").removeClass('col-6')
+      $("#store").removeClass('col-6')
+      $("#logout").addClass('col-4')
+      $("#store").addClass('col-4')
     }
     console.log(user)
   })

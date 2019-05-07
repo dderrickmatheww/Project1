@@ -33,6 +33,7 @@ var noResults = false;
   var database = firebase.database();
   
   // When a comment is added update the page
+  
   // database.ref().on("value", function(snapshot) {
   //   console.log("DB updated!");
   // });
@@ -45,20 +46,20 @@ var noResults = false;
 
   $(".add-Comment").on("click", function (){
    
-    console.log("Add comment clicked!");
+    
     lastComment = $(".input-Comment").val().trim();
     lastAuthor = $(".comment-Author").val().trim();
-    console.log(lastComment + "|" + lastAuthor);
+    
+   
     $(".input-Comment").empty();
     $(".comment-Author").empty();
     gameExists = false;
 
     var ref = firebase.database().ref(game).once("value").then(function(snapshot) {
       gameExists = snapshot.child(game).exists();
-      console.log("Existing" + gameExists);
+      
     });
-    console.log("Game: " + game);
-    console.log("Existing" + gameExists);
+   
     auth.onAuthStateChanged(user => { 
       if (user) {
        
@@ -87,11 +88,10 @@ var noResults = false;
   
             } else {
               // add the game and comment to the database
+              
               database.ref().push(game);
-  
               gameRef.child(game).push({
                 comment: lastComment + "|" + lastAuthor
-                
               });
               $(".comment-Author").val("");
               $(".input-Comment").val("");
@@ -117,36 +117,45 @@ var noResults = false;
       setTimeout(function() {
         $(".input-Comment").attr("placeholder", "Sign in to post comments!");
         }, 2000);
+        $(".input-Comment").addClass("red");
         return false;
       
     }
   })
     });
  
-
-
+   
+    
 function commentsRender(){
-  console.log(game);
+  auth.onAuthStateChanged(user => { 
+    if (user) {
   gameRef.child(game).on('child_added', function(snap){
+    
     var commentData = snap.val().comment.split('|');
-    console.log(snap.val());
-    var user = commentData[1];
+   
+    var user2 = commentData[1];
     var comment = commentData[0];
     var index = 1;
-    console.log('Comment:', comment, 'by', user)
+    
+    
     var newPost = $("<p>").html("&nbsp" + comment);
-    var newAuthor = $("<p>").html(user + ":");
+    if(user.displayName){var newAuthor = $("<p>").html(user.displayName + ":");}
+    else{var newAuthor = $("<p>").html(user2 + ":");}
+    
     newPost.attr("class", "text-break text-left width-auto lead");
     newPost.attr("style", "font-size: 12pt; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black;");
     newAuthor.attr("class", "text-break font-weight-bold text-left width-auto");
     newAuthor.attr("style", "font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:skyblue; text-shadow: .6pt 1.2pt 4pt black; float:left; text-decoration: underline;");
     $(".comment-Posts").append(newAuthor).append(newPost);
+   
   }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
   })
     
 } 
-
+      })
+    }
+    
 //************************************************************************************************************************************************************************************ */
 //NEWS API FOR OUR NEWS DROP DOWN
 //************************************************************************************************************************************************************************************ */
@@ -165,7 +174,7 @@ $(".news-pop").on("click", function (event) {
     method: "GET"
   }).then(function (response) {
     var result = response.articles;
-    console.log(result);
+    
 
     for (var i = 0; i < result.length; i++) {
       var title = result[i].title;
@@ -191,7 +200,7 @@ $(".news-pop").on("click", function (event) {
         newsDiv.append(p2);
       }
       if (descript) {
-        var p1 = $("<p>").html("<h4>Description:</h4> " + descript + "<a href='" + url + "'> Read more </a>");
+        var p1 = $("<p>").html("<h4>Description:</h4> " + descript + "<a href='" + url + "' target='_blank'> Read more </a>");
         newsDiv.append(p1);
       }
       $("#player").append(newsDiv)
@@ -234,14 +243,14 @@ $("#search-btn").on("click", function (event) {
     results = data.results
 
     if (!results.length) {
-      console.log("No results")
+      
       $("#search").val("")
       $(".form-control").attr("placeholder", "No results found");
       $(".form-control").addClass("red");
       $('.spinner').hide();
     }
     else {
-    console.log(results)
+    
     var name = results[0].name
     var image = results[0].image.medium_url
     var description = results[0].deck
@@ -361,7 +370,7 @@ $("#search-btn").on("click", function (event) {
    
       if (response.totalResults != 0) {
         
-        console.log(result);
+        
         var title1 = result[0].title;
         var title2 = result[1].title;
         var author1 = result[0].author;
@@ -375,7 +384,7 @@ $("#search-btn").on("click", function (event) {
 
 
 
-        console.log("yes")
+       
         if (title1) {
           $(".article-title1").html(title1);
         }
@@ -383,10 +392,10 @@ $("#search-btn").on("click", function (event) {
           $(".article-title2").html(title2);
         }
         if (author1) {
-          $(".readmore1").html("<a href='" + url1 + "'> Read more </a>")
+          $(".readmore1").html("<a href='" + url1 + "' target='_blank'> Read more </a>")
         }
         if (author2) {
-          $(".readmore2").html("<a href='" + url2 + "'> Read more </a>")
+          $(".readmore2").html("<a href='" + url2 + "' target='_blank'> Read more </a>")
         }
         if (descript1) {
           $(".info-desc1").html(descript1)
@@ -429,7 +438,7 @@ $(".yt-pop").on("click", function (event) {
   $("#player").empty()
   $('#player').show()
 
-  console.log("yes")
+ 
   var input = $(".game-title").attr("data-name").split(' ').join('+');
   var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + input + "+game+trailer" + "&type=video&key=AIzaSyAhsb0OUjYC9-im6U3pNoks26zkjBWUtHo"
 
@@ -439,7 +448,7 @@ $(".yt-pop").on("click", function (event) {
   }).then(function (response) {
 
     var videoId = response.items[0].id.videoId
-    console.log(videoId)
+   
 
     iFrame = $("<iframe id='ytplayer' class='container-fluid' type='text/html' width='640' height='360'src='https://www.youtube.com/embed/" + videoId + "?autoplay=0' frameborder='0'>")
     iFrame.addClass("frameBorder")
@@ -490,7 +499,7 @@ $(".yt-pop").on("click", function (event) {
 
 $( document ).ready(function() {
   
-  console.log("yes");
+ 
 
   var queryURL ="https://newsapi.org/v2/top-headlines?sources=ign&apiKey=f38cc49da4df4fd0b9ceea723e83cb15";
 
@@ -498,9 +507,9 @@ $( document ).ready(function() {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    console.log(response);
+   
     var results = response.articles;
-    console.log(results);
+   
 
     for (var i = 0; i < results.length; i++) {
       var title = results[i].title;
@@ -537,7 +546,7 @@ $( document ).ready(function() {
             " " +
             "<a href='" +
             url +
-            "'> Read more </a>"
+            "' target='_blank'> Read more </a>"
         );
         vidDiv.append(p3);
       } else {
@@ -547,7 +556,7 @@ $( document ).ready(function() {
             " " +
             "<a href='" +
             url +
-            "'> Read more </a>"
+            "' target='_blank'> Read more </a>"
         );
       }
 
@@ -579,7 +588,7 @@ $("#search").autocomplete({
   source: function(request, response) {
     input = $("#search").val().split(" ").join("+");
     var suggestURL = "https://www.giantbomb.com/api/search/?format=jsonp&api_key=99ec1d8980f419c59250e12a72f3b31d084e9bf9&query=" + input + "&resources=game"
-    console.log(suggestURL)
+    
 
 
       // JSONP Request
@@ -650,7 +659,7 @@ $("#search").autocomplete({
     },
     select: function(event, ui) {
       if (noResults) {
-        console.log("No results")
+        
         $("#search").val("")
         $(".form-control").attr("placeholder", "No results found");
         $(".form-control").addClass("red");
@@ -694,7 +703,7 @@ $("#search").autocomplete({
         url: 'https://www.giantbomb.com/api/game/' + input + "/?format=jsonp&api_key=99ec1d8980f419c59250e12a72f3b31d084e9bf9"
       }).then(function (data) {
         results = data.results
-        console.log(results)
+        
         var name = results.name
         var image = results.image.medium_url
         var description = results.deck
@@ -769,7 +778,7 @@ $("#search").autocomplete({
       }
       topNews();
       game = ui.item.value
-      console.log(game);
+      
       
       commentsRender();
         

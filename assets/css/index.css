@@ -178,7 +178,7 @@ input{
     background-color:skyblue;
     border-width:1px;
     width:73%;
-    margin-left:25%;
+    display:flex;
 }
 
 .game-card {
